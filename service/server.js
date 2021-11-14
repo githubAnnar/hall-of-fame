@@ -3,9 +3,9 @@ var express = require("express");
 var cors = require("cors");
 var Helpers = require("./src/helpers/helpers.js");
 
-//import { getDateNowString } from './src/helpers/helpers.js';
+var ClubEndpoints = require("./src/endpoints/club-endp.js");
 
-console.log(`Count of args: ${process.argv.length}`);
+console.log(`${Helpers.getDateNowString()} Count of args: ${process.argv.length}`);
 
 if (process.argv.length === 3) {
     if (process.argv[2] === 'dev') {
@@ -25,23 +25,24 @@ else {
 // Create express app
 var app = express();
 var db = require("./src/controllers/database.js");
-const { exit } = require("process");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-const helpers = new Helpers();
+const clubEndpoints = new ClubEndpoints("api", app, db);
 
 // Server port
 var HTTP_PORT = 8000
 // Start server
 app.listen(HTTP_PORT, () => {
-    console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT))
+    console.log(`${Helpers.getDateNowString()} Server running on port ${HTTP_PORT}`);
 });
 
 // Root endpoint
 app.get("/", (req, res, next) => {
     res.json({ "message": "Ok" });
-    console.log(`${getDateNowString()} request on root`);
+    console.log(`${Helpers.getDateNowString()} request on root`);
 });
+
+clubEndpoints.endpoints();

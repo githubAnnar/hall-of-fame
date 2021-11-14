@@ -1,5 +1,7 @@
 var sqlite3 = require('sqlite3').verbose();
-console.log(`DB ARGS: ${process.argv[2]}`);
+var Helpers = require('./../helpers/helpers.js');
+
+console.log(`${Helpers.getDateNowString()} DB ARGS: ${process.argv[2]}`);
 
 var DBSOURCE = "";
 if (process.argv[2] === "dev") {
@@ -30,7 +32,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         console.error(err.message)
         throw err
     } else {
-        console.log(`Connected to the SQLite database ${DBSOURCE}.`);
+        console.log(`${Helpers.getDateNowString()} Connected to the SQLite database ${DBSOURCE}.`);
     }
 });
 
