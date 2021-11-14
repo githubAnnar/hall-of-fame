@@ -13,6 +13,7 @@ class ClubEndpoints {
     }
 
     endpoints() {
+        console.log(`${Helpers.getDateNowString()} Starting enpoints for club`);
         const MODULE = "club";
         const ALL_CLUBS = "getallclubs";
 
