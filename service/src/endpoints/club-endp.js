@@ -18,6 +18,8 @@ class ClubEndpoints {
         const ALL_CLUBS = "getallclubs";
         const ONE_CLUB = "getclubbyid";
         const CLUB_REVISIONS = "getclubrevisionsbyid";
+        const ADD_CLUB = "addclub";
+        const ADD_CLUBR = "addclubrevision";
 
         this.app.get(`/${this.rootPath}/${MODULE}/${ALL_CLUBS}`, (req, res, next) => {
             this.repository.getAllClubs(res);
@@ -32,6 +34,16 @@ class ClubEndpoints {
         this.app.get(`/${this.rootPath}/${MODULE}/${CLUB_REVISIONS}/:id`, (req, res, next) => {
             this.repository.getClubRevisionsById(res, req.params.id);
             console.log(`${Helpers.getDateNowString()} request: GET ${CLUB_REVISIONS}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.post(`/${this.rootPath}/${MODULE}/${ADD_CLUB}/`, (req, res, next) => {
+            this.repository.insertNewClub(res, req.body.name, req.body.update);
+            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUB}. req: ${JSO.stringify(req.body)}`);
+        });
+
+        this.app.post(`/${this.rootPath}/${MODULE}/${ADD_CLUBR}/`, (req, res, next) => {
+            this.repository.insertClubRevisionById(res, req.body.id, req.body.name, req.bod.update);
+            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUBR}. req: ${JSO.stringify(req.body)}`);
         });
     }
 }
