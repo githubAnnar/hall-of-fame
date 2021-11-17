@@ -38,12 +38,12 @@ class ClubEndpoints {
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_CLUB}/`, (req, res, next) => {
             this.repository.insertNewClub(res, req.body.name, req.body.update);
-            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUB}. req: ${JSO.stringify(req.body)}`);
+            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUB}. req: ${JSON.stringify(req.body)}`);
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_CLUBR}/`, (req, res, next) => {
-            this.repository.insertClubRevisionById(res, req.body.id, req.body.name, req.bod.update);
-            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUBR}. req: ${JSO.stringify(req.body)}`);
+            this.repository.insertClubRevisionById(res, req.body.id, req.body.name, req.body.update);
+            console.log(`${Helpers.getDateNowString()} request: POST ${ADD_CLUBR}. req: ${JSON.stringify(req.body)}`);
         });
     }
 }

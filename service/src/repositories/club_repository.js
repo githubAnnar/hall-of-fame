@@ -106,15 +106,13 @@ class ClubRepository {
                     res.status(400).json({ "error": err.message })
                     return;
                 }
-
+                
                 res.json({
                     "message": "success",
                     "data": row,
                     "id": row.Id
                 });
             });
-
-            console.log(`${Helpers.getDateNowString()} insertClubRevisionById inserted Id: ${row.Id}`);
         });
     }
 
@@ -141,34 +139,35 @@ class ClubRepository {
             Updated: updateYear
         };
 
-        var sql = 'INSERT INTO Club () VALUES ()';
+        var sql = 'INSERT INTO Club DEFAULT VALUES';
         var clubRow = null;
         this.db.serialize(() => {
             this.db.run(sql, [], (err) => {
                 if (err) {
-                    console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                    console.error(`${Helpers.getDateNowString()} INSERT 1 ERROR: ${err.message}`);
                     res.status(400).json({ "error": err.message });
                     return;
                 }
             });
             this.db.get("SELECT Id FROM Club WHERE Id = (SELECT seq FROM sqlite_sequence WHERE name = 'Club')", [], (err, row) => {
                 if (err) {
-                    console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                    console.error(`${Helpers.getDateNowString()} GET ERROR: ${err.message}`);
                     res.status(400).json({ "error": err.message });
                     return;
                 }
-
                 clubRow = row;
-            });
-            this.db.run('INSERT INTO ClubRevision (ClubId, Name, Updated) VALUES', [clubRow.Id, data.ClubName, data.Updated], (err) => {
-                if (err) {
-                    console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
-                    res.status(400).json({ "error": err.message });
-                    return;
-                }
-                res.json({
-                    "message": "success",
-                    "data": clubId
+                console.log(`${Helpers.getDateNowString()} insertNewClub inserted row: ${JSON.stringify(clubRow)}`);
+
+                this.db.run('INSERT INTO ClubRevision (ClubId, Name, Updated) VALUES (?, ?, ?)', [clubRow.Id, data.ClubName, data.Updated], (err) => {
+                    if (err) {
+                        console.error(`${Helpers.getDateNowString()} INSERT 2 ERROR: ${err.message}`);
+                        res.status(400).json({ "error": err.message });
+                        return;
+                    }
+                    res.json({
+                        "message": "success",
+                        "data": clubRow
+                    });
                 });
             });
         });
