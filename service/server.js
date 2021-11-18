@@ -3,7 +3,7 @@ var express = require("express");
 var cors = require("cors");
 var Helpers = require("./src/helpers/helpers.js");
 
-var ClubEndpoints = require("./src/endpoints/club-endp.js");
+var ClubEndpoints = require("./src/endpoints/club_endp.js");
 
 console.log(`${Helpers.getDateNowString()} Count of args: ${process.argv.length}`);
 

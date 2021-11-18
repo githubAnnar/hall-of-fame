@@ -1,7 +1,7 @@
-const Helpers = require("./../helpers/helpers.js");
+const Helpers = require("../helpers/helpers.js");
 
 // Database repositories
-var ClubRepository = require("./../repositories/club_repository.js");
+var ClubRepository = require("../repositories/club_repository.js");
 
 class ClubEndpoints {
     constructor(rootPath, app, db) {
