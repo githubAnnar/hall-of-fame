@@ -1,0 +1,14 @@
+BEGIN TRANSACTION;
+INSERT INTO "Race" ("Id","Year","Length") VALUES (1,2010,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (2,2011,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (3,2012,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (4,2013,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (5,2014,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (6,2015,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (7,2016,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (8,2017,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (9,2018,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (10,2019,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (11,2020,10000);
+INSERT INTO "Race" ("Id","Year","Length") VALUES (12,2021,10000);
+COMMIT;
