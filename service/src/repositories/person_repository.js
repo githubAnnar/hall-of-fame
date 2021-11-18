@@ -62,7 +62,7 @@ class PersonRepository {
     }
 
     // Insert new revision for person by id
-    insertClubRevisionById(res, id, firstName, lastName, updateYear, sex) {
+    insertPersonRevisionById(res, id, firstName, lastName, updateYear, sex) {
         var errors = [];
 
         if (!id) {
@@ -116,7 +116,7 @@ class PersonRepository {
                     res.status(400).json({ "error": err.message })
                     return;
                 }
-
+                console.log(JSON.stringify(row));
                 res.json({
                     "message": "success",
                     "data": row,
@@ -127,7 +127,7 @@ class PersonRepository {
     }
 
     // Insert new person
-    insertNewClub(res, firstName, lastName, updateYear, sex) {
+    insertNewPerson(res, firstName, lastName, updateYear, sex) {
         var errors = [];
 
         if (!firstName) {
