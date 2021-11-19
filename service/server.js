@@ -4,7 +4,8 @@ var cors = require("cors");
 var Helpers = require('./src/helpers/helpers.js');
 
 var ClubEndpoints = require('./src/endpoints/club_endp.js');
-var PersonEndpoints = require('./src/endpoints/person_endp.js')
+var PersonEndpoints = require('./src/endpoints/person_endp.js');
+var RaceEndpoints = require('./src/endpoints/race_endp.js');
 
 console.log(`${Helpers.getDateNowString()} Count of args: ${process.argv.length}`);
 
@@ -33,6 +34,8 @@ app.use(cors());
 
 const clubEndpoints = new ClubEndpoints("api", app, db);
 const personEndpoints = new PersonEndpoints("api", app, db);
+const raceEndpoints = new RaceEndpoints("api", app, db);
+
 // Server port
 var HTTP_PORT = 8000
 // Start server
@@ -48,3 +51,4 @@ app.get("/", (req, res, next) => {
 
 clubEndpoints.endpoints();
 personEndpoints.enpoints();
+raceEndpoints.endpoints();
