@@ -83,7 +83,7 @@ class RaceRepository {
                     return;
                 }
 
-                console.log(`${Helpers.getDateNowString()} insertNewPerson inserted row: ${JSON.stringify(row)}`);
+                console.log(`${Helpers.getDateNowString()} insertNewRace inserted row: ${JSON.stringify(row)}`);
                 res.json({
                     "message": "success",
                     "data": row
@@ -101,7 +101,7 @@ class RaceRepository {
         };
 
         var sql = 'UPDATE Race SET Year = COALESCE(?, Year), Length = COALESCE(?, Length) WHERE Id = ?'
-        params = [data.Year, data.Length, data.Id];
+        var params = [data.Year, data.Length, data.Id];
         this.db.run(sql, params, (err, result) => {
             if (err) {
                 console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
@@ -120,7 +120,7 @@ class RaceRepository {
     // Delete Race
     deleteRace(res, id) {
         var sql = 'DELETE FROM Race WHERE Id = ?';
-        params = [id];
+        var params = [id];
         this.db.run(sql, params, (err, result) => {
             if (err) {
                 console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
