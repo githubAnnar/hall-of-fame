@@ -113,7 +113,7 @@ class ResultRepository {
         };
 
         var sql = 'UPDATE Result SET RaceId = COALESCE(?, RaceId), PersonRevisionId = COALESCE(?, PersonRevisionId), ClubId = COALESCE(?, ClubId), Time = COALESCE(?, Time) WHERE Id = ?'
-        params = [data.RaceId, data.PersonRevisionId, data.ClubId, data.Time, data.Id];
+        var params = [data.RaceId, data.PersonRevisionId, data.ClubId, data.Time, data.Id];
         this.db.run(sql, params, (err, result) => {
             if (err) {
                 console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
@@ -132,7 +132,7 @@ class ResultRepository {
     // Delete Result
     deleteResult(res, id) {
         var sql = 'DELETE FROM Result WHERE Id = ?';
-        params = [id];
+        var params = [id];
         this.db.run(sql, params, (err, result) => {
             if (err) {
                 console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
