@@ -8,7 +8,7 @@ class ResultRepository {
 
     // Get all results
     getAllResults(res) {
-        var sql = 'SELECT Id, RaceId, PersonRevisionId, ClubId, Time FROM Result';
+        var sql = 'SELECT Id, RaceId, PersonRevisionId, ClubRevisionId, Time FROM Result';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -26,7 +26,7 @@ class ResultRepository {
 
     // Get result by Id
     getResultById(res, id) {
-        var sql = 'SELECT Id, RaceId, PersonRevisionId, CLubId, Time FROM Result WHERE Id = ?'
+        var sql = 'SELECT Id, RaceId, PersonRevisionId, CLubRevisionId, Time FROM Result WHERE Id = ?'
         var params = [id];
         this.db.get(sql, params, (err, row) => {
             if (err) {
@@ -43,7 +43,7 @@ class ResultRepository {
     }
 
     // Insert new result
-    insertNewResult(res, raceId, personRevisionId, clubId, time) {
+    insertNewResult(res, raceId, personRevisionId, clubRevisionId, time) {
         var errors = [];
 
         if (!raceId) {
@@ -54,7 +54,7 @@ class ResultRepository {
             errors.push("No Person is specified!");
         }
 
-        if (!clubId) {
+        if (!clubRevisionId) {
             errors.push("No Club is specified!");
         }
 
@@ -71,13 +71,13 @@ class ResultRepository {
         var data = {
             RaceId: raceId,
             PersonRevisionId: personRevisionId,
-            ClubId: clubId,
+            ClubRevisionId: clubRevisionId,
             Time: time
         };
 
-        var params = [data.RaceId, data.PersonRevisionId, data.ClubId, data.Time];
+        var params = [data.RaceId, data.PersonRevisionId, data.ClubRevisionId, data.Time];
 
-        var sql = 'INSERT INTO Result (RaceId, PersonRevisionId, ClubId, Time) VALUES (?, ?, ?, ?)';
+        var sql = 'INSERT INTO Result (RaceId, PersonRevisionId, ClubRevisionId, Time) VALUES (?, ?, ?, ?)';
         this.db.serialize(() => {
             this.db.run(sql, params, (err) => {
                 if (err) {
@@ -103,17 +103,17 @@ class ResultRepository {
     }
 
     // Update Result
-    updateResultById(res, id, raceId, personRevisionId, clubId, time) {
+    updateResultById(res, id, raceId, personRevisionId, clubRevisionId, time) {
         var data = {
             Id: id,
             RaceId: raceId,
             PersonRevisionId: personRevisionId,
-            ClubId: clubId,
+            ClubRevisionId: clubRevisionId,
             Time: time
         };
 
-        var sql = 'UPDATE Result SET RaceId = COALESCE(?, RaceId), PersonRevisionId = COALESCE(?, PersonRevisionId), ClubId = COALESCE(?, ClubId), Time = COALESCE(?, Time) WHERE Id = ?'
-        var params = [data.RaceId, data.PersonRevisionId, data.ClubId, data.Time, data.Id];
+        var sql = 'UPDATE Result SET RaceId = COALESCE(?, RaceId), PersonRevisionId = COALESCE(?, PersonRevisionId), ClubRevisionId = COALESCE(?, ClubRevisionId), Time = COALESCE(?, Time) WHERE Id = ?'
+        var params = [data.RaceId, data.PersonRevisionId, data.ClubRevisionId, data.Time, data.Id];
         this.db.run(sql, params, (err, result) => {
             if (err) {
                 console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
