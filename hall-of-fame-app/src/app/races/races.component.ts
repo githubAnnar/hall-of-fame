@@ -14,5 +14,4 @@ export class RacesComponent implements OnInit {
     console.log("Inside RacesComponent");
     this.title="Races";
   }
-
 }

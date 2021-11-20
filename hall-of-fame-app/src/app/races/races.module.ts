@@ -5,14 +5,14 @@ import { RacesRoutingModule } from './races-routing.module';
 import { RacesComponent } from './races.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RacesComponent
+  ],
   imports: [
     CommonModule,
     RacesRoutingModule
   ],
-  exports: [
-    RacesComponent
-  ]
+  exports: []
 })
 
 export class RacesModule { }
