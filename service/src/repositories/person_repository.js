@@ -61,6 +61,25 @@ class PersonRepository {
         });
     }
 
+    // Get person revisions by race
+    getPersonRevisionsByRaceId(res, id) {
+        var sql = 'SELECT PR.Id, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated, PR.Sex FROM PersonRevision PR INNER JOIN Result R ON PR.Id = R.PersonRevisionId WHERE R.RaceId = ?';
+        var params = [id];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getPersonRevisionsByRaceId returns ${rows.length} rows for id ${id}`);
+        });
+    }
+
     // Insert new revision for person by id
     insertPersonRevisionById(res, id, firstName, lastName, updateYear, sex) {
         var errors = [];

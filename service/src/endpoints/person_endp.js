@@ -18,6 +18,7 @@ class PersonEndpoints {
         const ALL_PERSONS = "getallpersons";
         const ONE_PERSON = "getpersonbyid";
         const PERSON_REVISIONS = "getpersonrevisionsbyid";
+        const PERSON_REVISIONSBYRACE = "getpersonrevisionsbyraceid";
         const ADD_PERSON = "addperson";
         const ADD_PERSONR = "addpersonrevision";
 
@@ -34,6 +35,11 @@ class PersonEndpoints {
         this.app.get(`/${this.rootPath}/${MODULE}/${PERSON_REVISIONS}/:id`, (req, res, next) => {
             this.repository.getPersonRevisionsById(res, req.params.id);
             console.log(`${Helpers.getDateNowString()} request: GET ${PERSON_REVISIONS}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${PERSON_REVISIONSBYRACE}/:id`, (req, res, next) => {
+            this.repository.getPersonRevisionsByRaceId(res, req.params.id);
+            console.log(`${Helpers.getDateNowString()} request: GET ${PERSON_REVISIONSBYRACE}. req:${JSON.stringify(req.params)}`);
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_PERSON}/`, (req, res, next) => {
