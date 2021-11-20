@@ -38,7 +38,61 @@ class ResultRepository {
                 "message": "success",
                 "data": row
             });
-            console.log(`${Helpers.getDateNowString()} getResultById returns Id ${row.Id}`);
+            console.log(`${Helpers.getDateNowString()} getResultById returns ${row.Id}`);
+        });
+    }
+
+    // Get all results by person id
+    getResultsByPersonId(res, id) {
+        var sql = 'SELECT R.Id, R.RaceId, R.PersonRevisionId, R.ClubRevisionId, R.Time FROM Result R INNER JOIN PersonRevision PR ON PR.Id = R.PersonRevisionId INNER JOIN Person P ON P.Id = PR.PersonId WHERE P.Id = ?'
+        var params = [id];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getResultsByPersonId returns ${rows.length} rows`);
+        });
+    }
+
+    // Get all results by Race id
+    getResultsByRaceId(res, id) {
+        var sql = 'SELECT R.Id, R.RaceId, R.PersonRevisionId, R.ClubRevisionId, R.Time FROM Result R INNER JOIN Race RA ON RA.Id = R.RaceId WHERE RA.Id = ?'
+        var params = [id];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getResultsByRaceId returns ${rows.length} rows`);
+        });
+    }
+
+    // Get all results by Club id
+    getResultsByClubId(res, id) {
+        var sql = 'SELECT R.Id, R.RaceId, R.PersonRevisionId, R.ClubRevisionId, R.Time FROM Result R INNER JOIN ClubRevision CR ON CR.Id = R.ClubRevisionId INNER JOIN Club C ON C. Id = CR.ClubId WHERE C.Id = ?'
+        var params = [id];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getResultsByClubId returns ${rows.length} rows`);
         });
     }
 
