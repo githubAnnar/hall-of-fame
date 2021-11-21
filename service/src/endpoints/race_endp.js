@@ -40,7 +40,7 @@ class RaceEndpoints {
             console.log(`${Helpers.getDateNowString()} request: DELETE ${DELETE_RACE}. req: ${JSON.stringify(req.params)}`);
         });
 
-        this.app.put(`/${this.rootPath}/${MODULE}/${UPDATE_RACE}/`, (req, res, next) => {
+        this.app.patch(`/${this.rootPath}/${MODULE}/${UPDATE_RACE}/`, (req, res, next) => {
             this.repository.updateRaceById(res, req.body.id, req.body.year, req.body.length);
             console.log(`${Helpers.getDateNowString()} request: UPDATE ${UPDATE_RACE}. req: ${JSON.stringify(req.body)}`);
         });
