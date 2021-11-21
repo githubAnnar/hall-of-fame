@@ -44,7 +44,7 @@ class PersonRepository {
 
     // Get person revisions
     getPersonRevisionsById(res, id) {
-        var sql = 'SELECT Id, PersonId, FirstName, LastName, Updated, Sex FROM PersonRevision WHERE PersonId = ? ORDER BY Updated';
+        var sql = 'SELECT Id, PersonId, Firstname, Lastname, Updated, Sex FROM PersonRevision WHERE PersonId = ? ORDER BY Updated';
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
