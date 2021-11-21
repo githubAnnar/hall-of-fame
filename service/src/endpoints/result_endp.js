@@ -58,7 +58,7 @@ class ResultEndpoints {
             console.log(`${Helpers.getDateNowString()} request: DELETE ${DELETE_RESULT}. req: ${JSON.stringify(req.params)}`);
         });
 
-        this.app.put(`/${this.rootPath}/${MODULE}/${UPDATE_RESULT}/`, (req, res, next) => {
+        this.app.patch(`/${this.rootPath}/${MODULE}/${UPDATE_RESULT}/`, (req, res, next) => {
             this.repository.updateResultById(res, req.body.id, req.body.raceId, req.body.personRevisionId, req.body.clubId, req.body.time);
             console.log(`${Helpers.getDateNowString()} request: UPDATE ${UPDATE_RESULT}. req: ${JSON.stringify(req.body)}`);
         });
