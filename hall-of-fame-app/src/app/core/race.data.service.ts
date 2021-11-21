@@ -5,8 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
 import { IDeleteRaceMessage } from '../shared/idelete-race-message-interface';
 
-import { IGetRaceMessage } from '../shared/igetracemessage-interface';
-import { IGetRacesMessage } from '../shared/igetracesmessage-interfaces';
+import { IGetRaceMessage } from '../shared/iget-race-message-interface';
+import { IGetRacesMessage } from '../shared/iget-races-message-interfaces';
 import { IPatchRaceMessage } from '../shared/ipatch-race-message-interface';
 import { IPostRaceMessage } from '../shared/ipost-race-message-interface';
 import { IRace } from '../shared/irace-interface';
