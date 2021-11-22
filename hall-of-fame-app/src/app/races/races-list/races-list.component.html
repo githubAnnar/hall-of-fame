@@ -1,0 +1,27 @@
+<table class="table table-hover">
+    <caption>Number of Races: {{ races.length}}
+    </caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" (click)="sort('Year')">
+                Year</th>
+            <th scope="col" (click)="sort('Length')">
+                Length</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let race of races">
+        <th scope="row"> {{race.Id}} </th>
+        <td>
+            <a [routerLink]="['/race', race.Id]">
+                {{race.Year }}
+            </a>
+        </td>
+        <td><a [routerLink]="['/race', race.Id]">
+                {{race.Length}}
+            </a></td>
+    </tr>
+    <tr *ngIf="!races || !races.length">
+        <td colspan="3">No races found</td>
+    </tr>
+</table>
