@@ -13,7 +13,7 @@ export class ClubsComponent implements OnInit {
   getClubsMessage!: IGetClubsMessage;
   clubs!: IClubEx[];
 
-  constructor(private raceDataService: ClubDataService) { }
+  constructor(private clubDataService: ClubDataService) { }
 
   ngOnInit(): void {
     console.log("Inside ClubsComponent");
@@ -31,6 +31,6 @@ export class ClubsComponent implements OnInit {
       }
     };
 
-    this.raceDataService.getAllClubs().subscribe(getClubsObserver);
+    this.clubDataService.getAllClubs().subscribe(getClubsObserver);
   }
 }

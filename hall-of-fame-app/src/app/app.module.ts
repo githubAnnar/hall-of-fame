@@ -1,31 +1,31 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RacesModule } from './races/races.module';
 import { ClubsModule } from './clubs/clubs.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RacesModule,
-    ClubsModule,
-    HttpClientModule,
-    SharedModule
+    ClubsModule,    
+    SharedModule,
+    CoreModule
+  ],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
