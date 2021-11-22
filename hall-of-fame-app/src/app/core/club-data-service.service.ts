@@ -14,7 +14,7 @@ import { IPostClubRevisionMessage } from '../shared/ipost-club-revision-message-
 @Injectable({
   providedIn: 'root'
 })
-export class ClubDataServiceService {
+export class ClubDataService {
 
   // local server
   baseUrl: string = 'http://localhost:8000/api/club/'

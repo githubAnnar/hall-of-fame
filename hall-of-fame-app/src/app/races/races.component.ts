@@ -9,7 +9,7 @@ import { IRace } from '../shared/irace-interface';
   styleUrls: ['./races.component.css']
 })
 export class RacesComponent implements OnInit {
-  title: string | undefined;
+  title!: string;
   getRacesMessage!: IGetRacesMessage;
   races!: IRace[];
 

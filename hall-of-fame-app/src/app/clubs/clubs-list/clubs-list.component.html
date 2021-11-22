@@ -1,0 +1,30 @@
+<filter-textbox (changed)="filter($event)"></filter-textbox>
+<br />
+<br />
+<table class="table table-hover">
+    <caption>Number of Clubs: {{ filteredClubs.length}}
+    </caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" (click)="sort('Name')">
+                Name</th>
+            <th scope="col" (click)="sort('Updated')">
+                Updated</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let club of filteredClubs">
+        <th scope="row"> {{club.Id}} </th>
+        <td>
+            <a [routerLink]="['/club', club.Id]">
+                {{club.Name | titlecase}}
+            </a>
+        </td>
+        <td><a [routerLink]="['/club', club.Id]">
+                {{club.Updated }}
+            </a></td>
+    </tr>
+    <tr *ngIf="!filteredClubs || !filteredClubs.length">
+        <td colspan="3">No clubs found</td>
+    </tr>
+</table>
