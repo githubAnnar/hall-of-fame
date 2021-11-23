@@ -1,0 +1,46 @@
+<filter-textbox (changed)="filter($event)"></filter-textbox>
+<br />
+<br />
+<table class="table table-hover">
+    <caption>Number of Persons: {{ filteredPersons.length}}
+    </caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" (click)="sort('Firstname')">
+                Firstname</th>
+            <th scope="col" (click)="sort('Lastname')">
+                Lastname</th>
+            <th scope="col" (click)="sort('Updated')">
+                Updated</th>
+            <th scope="col" (click)="sort('Sex')">
+                Sex</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let person of filteredPersons">
+        <th scope="row"> {{person.Id}} </th>
+        <td>
+            <a [routerLink]="['/person', person.Id]">
+                {{person.Firstname | titlecase}}
+            </a>
+        </td>
+        <td>
+            <a [routerLink]="['/person', person.Id]">
+                {{person.Lastname | titlecase}}
+            </a>
+        </td>
+        <td>
+            <a [routerLink]="['/person', person.Id]">
+                {{person.Updated | titlecase}}
+            </a>
+        </td>
+        <td>
+            <a [routerLink]="['/person', person.Id]">
+                {{person.Sex}}
+            </a>
+        </td>
+    </tr>
+    <tr *ngIf="!filteredPersons || !filteredPersons.length">
+        <td colspan="3">No persons found</td>
+    </tr>
+</table>

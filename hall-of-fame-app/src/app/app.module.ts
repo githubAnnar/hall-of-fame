@@ -10,6 +10,7 @@ import { RacesModule } from './races/races.module';
 import { ClubsModule } from './clubs/clubs.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { PersonsModule } from './persons/persons.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     RacesModule,
     ClubsModule,
+    PersonsModule,
     AppRoutingModule,
     SharedModule,
     CoreModule
