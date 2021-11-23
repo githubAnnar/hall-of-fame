@@ -14,7 +14,7 @@ import { RacesListComponent } from './races-list/races-list.component';
     CommonModule,
     RacesRoutingModule
   ],
-  exports: []
+  exports: [RacesComponent]
 })
 
 export class RacesModule { }

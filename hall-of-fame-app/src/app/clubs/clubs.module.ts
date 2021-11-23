@@ -12,6 +12,6 @@ import { SharedModule } from '../shared/shared.module';
     ClubsRoutingModule,
     SharedModule
   ],
-  exports: []
+  exports: [ClubsComponent]
 })
 export class ClubsModule { }
