@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SorterService } from 'src/app/core/sorter-service.service';
-import { IRace } from 'src/app/shared/irace-interface';
+import { IRace } from 'src/app/shared/irace.interface';
 
 @Component({
   selector: 'app-races-list',

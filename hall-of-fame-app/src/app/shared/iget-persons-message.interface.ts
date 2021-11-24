@@ -1,4 +1,4 @@
-import { IPersonEx } from "./iperson-ex-interface";
+import { IPersonEx } from "./iperson-ex.interface";
 
 export interface IGetPersonsMessage {
     message: string;

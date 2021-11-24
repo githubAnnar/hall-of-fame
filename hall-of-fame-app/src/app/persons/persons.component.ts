@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonDataService } from '../core/person-data-service.service';
-import { IGetPersonsMessage } from '../shared/iget-persons-message-interface';
-import { IPersonEx } from '../shared/iperson-ex-interface';
+import { IGetPersonsMessage } from '../shared/iget-persons-message.interface';
+import { IPersonEx } from '../shared/iperson-ex.interface';
 
 @Component({
   selector: 'app-persons',

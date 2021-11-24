@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SorterService } from 'src/app/core/sorter-service.service';
-import { IPersonEx } from 'src/app/shared/iperson-ex-interface';
+import { IPersonEx } from 'src/app/shared/iperson-ex.interface';
 
 @Component({
   selector: 'app-persons-list',

@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
-import { IGetPersonMessage } from '../shared/iget-person-message-interface';
-import { IGetPersonRevisionsMessage } from '../shared/iget-person-revisions-message-interface';
-import { IGetPersonsMessage } from '../shared/iget-persons-message-interface';
-import { IPersonEx } from '../shared/iperson-ex-interface';
-import { IPersonRevision } from '../shared/iperson-revision-interface';
-import { IPostPersonMessage } from '../shared/ipost-person-message-interface';
-import { IPostPersonRevisionMessage } from '../shared/ipost-person-revision-message-interface';
+import { IGetPersonMessage } from '../shared/iget-person-message.interface';
+import { IGetPersonRevisionsMessage } from '../shared/iget-person-revisions-message.interface';
+import { IGetPersonsMessage } from '../shared/iget-persons-message.interface';
+import { IPersonEx } from '../shared/iperson-ex.interface';
+import { IPersonRevision } from '../shared/iperson-revision.interface';
+import { IPostPersonMessage } from '../shared/ipost-person-message.interface';
+import { IPostPersonRevisionMessage } from '../shared/ipost-person-revision-message.interface';
 
 @Injectable({
   providedIn: 'root'

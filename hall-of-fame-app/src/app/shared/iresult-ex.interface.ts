@@ -1,0 +1,2 @@
+export interface IResultEx {
+}

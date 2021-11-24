@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
-import { IClubEx } from '../shared/iclub-ex-interface';
-import { IClubRevision } from '../shared/iclub-revision-interface';
-import { IGetClubMessage } from '../shared/iget-club-message-interface';
-import { IGetClubRevisionsMessage } from '../shared/iget-club-revisions-message-interface';
-import { IGetClubsMessage } from '../shared/iget-clubs-message-interface';
-import { IPostClubMessage } from '../shared/ipost-club-message-interface';
-import { IPostClubRevisionMessage } from '../shared/ipost-club-revision-message-interface';
+import { IClubEx } from '../shared/iclub-ex.interface';
+import { IClubRevision } from '../shared/iclub-revision.interface';
+import { IGetClubMessage } from '../shared/iget-club-message.interface';
+import { IGetClubRevisionsMessage } from '../shared/iget-club-revisions-message.interface';
+import { IGetClubsMessage } from '../shared/iget-clubs-message.interface';
+import { IPostClubMessage } from '../shared/ipost-club-message.interface';
+import { IPostClubRevisionMessage } from '../shared/ipost-club-revision-message.interface';
 
 @Injectable({
   providedIn: 'root'

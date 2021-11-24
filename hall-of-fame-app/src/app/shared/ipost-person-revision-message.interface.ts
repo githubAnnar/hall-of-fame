@@ -1,4 +1,4 @@
-import { IPersonRevision } from "./iperson-revision-interface";
+import { IPersonRevision } from "./iperson-revision.interface";
 
 export interface IPostPersonRevisionMessage {
     message: string;

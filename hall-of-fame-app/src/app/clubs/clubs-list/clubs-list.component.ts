@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SorterService } from 'src/app/core/sorter-service.service';
-import { IClubEx } from 'src/app/shared/iclub-ex-interface';
+import { IClubEx } from 'src/app/shared/iclub-ex.interface';
 
 @Component({
   selector: 'app-clubs-list',

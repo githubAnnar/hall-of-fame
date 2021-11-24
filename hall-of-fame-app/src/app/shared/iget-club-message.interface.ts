@@ -1,4 +1,4 @@
-import { IClubEx } from "./iclub-ex-interface";
+import { IClubEx } from "./iclub-ex.interface";
 
 export interface IGetClubMessage {
     message: string;

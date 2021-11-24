@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceDataService } from '../core/race-data-service.service';
-import { IGetRacesMessage } from '../shared/iget-races-message-interfaces';
-import { IRace } from '../shared/irace-interface';
+import { IGetRacesMessage } from '../shared/iget-races-message.interfaces';
+import { IRace } from '../shared/irace.interface';
 
 @Component({
   selector: 'app-races',

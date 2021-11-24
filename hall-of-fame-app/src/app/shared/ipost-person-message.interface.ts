@@ -1,4 +1,4 @@
-import { IPerson } from "./iperson-interface";
+import { IPerson } from "./iperson.interface";
 
 export interface IPostPersonMessage {
     message: string;

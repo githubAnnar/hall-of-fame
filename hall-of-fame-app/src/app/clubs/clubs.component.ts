@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubDataService } from '../core/club-data-service.service';
-import { IClubEx } from '../shared/iclub-ex-interface';
-import { IGetClubsMessage } from '../shared/iget-clubs-message-interface';
+import { IClubEx } from '../shared/iclub-ex.interface';
+import { IGetClubsMessage } from '../shared/iget-clubs-message.interface';
 
 @Component({
   selector: 'app-clubs',

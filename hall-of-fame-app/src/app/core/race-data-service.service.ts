@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
-import { IDeleteRaceMessage } from '../shared/idelete-race-message-interface';
+import { IDeleteRaceMessage } from '../shared/idelete-race-message.interface';
 
-import { IGetRaceMessage } from '../shared/iget-race-message-interface';
-import { IGetRacesMessage } from '../shared/iget-races-message-interfaces';
-import { IPatchRaceMessage } from '../shared/ipatch-race-message-interface';
-import { IPostRaceMessage } from '../shared/ipost-race-message-interface';
-import { IRace } from '../shared/irace-interface';
+import { IGetRaceMessage } from '../shared/iget-race-message.interface';
+import { IGetRacesMessage } from '../shared/iget-races-message.interfaces';
+import { IPatchRaceMessage } from '../shared/ipatch-race-message.interface';
+import { IPostRaceMessage } from '../shared/ipost-race-message.interface';
+import { IRace } from '../shared/irace.interface';
 
 @Injectable({
   providedIn: 'root'

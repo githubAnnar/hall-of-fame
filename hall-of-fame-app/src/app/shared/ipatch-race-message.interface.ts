@@ -1,4 +1,4 @@
-import { IRace } from "./irace-interface";
+import { IRace } from "./irace.interface";
 
 export interface IPatchRaceMessage {
     message: string;

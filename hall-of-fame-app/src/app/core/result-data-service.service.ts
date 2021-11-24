@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
-import { IDeleteResultMessage } from '../shared/idelete-result-message-interface';
-import { IGetResultMessage } from '../shared/iget-result-message-interface';
-import { IGetResultsMessage } from '../shared/iget-results-message-interface';
-import { IPatchResultMessage } from '../shared/ipatch-result-message-interface';
-import { IPostResultMessage } from '../shared/ipost-result-message-interface';
-import { IResult } from '../shared/iresult-interface';
+import { IDeleteResultMessage } from '../shared/idelete-result-message.interface';
+import { IGetResultMessage } from '../shared/iget-result-message.interface';
+import { IGetResultsMessage } from '../shared/iget-results-message.interface';
+import { IPatchResultMessage } from '../shared/ipatch-result-message.interface';
+import { IPostResultMessage } from '../shared/ipost-result-message.interface';
+import { IResult } from '../shared/iresult.interface';
 
 @Injectable({
   providedIn: 'root'

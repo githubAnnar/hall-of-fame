@@ -1,4 +1,4 @@
-import { IResult } from "./iresult-interface";
+import { IResult } from "./iresult.interface";
 
 export interface IGetResultsMessage {
     message: string;
