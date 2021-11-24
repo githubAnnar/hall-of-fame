@@ -15,10 +15,15 @@ class ResultEndpoints {
         console.log(`${Helpers.getDateNowString()} Starting enpoints for result`);
         const MODULE = "result";
         const ALL_RESULTS = "getallresults";
+        const ALL_RESULTS_EX = "getallresultsex";
         const ONE_RESULT = "getresultbyid";
+        const ONE_RESULT_EX = "getresultbyidex";
         const PERSON_RESULTS = "getresultsbypersonid";
+        const PERSON_RESULTS_EX = "getresultsbypersonidex";
         const RACE_RESULTS = "getresultsbyraceid";
+        const RACE_RESULTS_EX = "getresultsbyraceidex";
         const CLUB_RESULTS = "getresultsbyclubid";
+        const CLUB_RESULTS_EX = "getresultsbyclubidex";
         const ADD_RESULT = "addresult";
         const DELETE_RESULT = "deleteresult";
         const UPDATE_RESULT = "updateresult";
@@ -28,9 +33,19 @@ class ResultEndpoints {
             console.log(`${Helpers.getDateNowString()} request: GET ${ALL_RESULTS}. req:${JSON.stringify(req.params)}`);
         });
 
+        this.app.get(`/${this.rootPath}/${MODULE}/${ALL_RESULTS_EX}`, (req, res, next) => {
+            this.repository.getAllResultsEx(res);
+            console.log(`${Helpers.getDateNowString()} request: GET ${ALL_RESULTS_EX}. req:${JSON.stringify(req.params)}`);
+        });
+
         this.app.get(`/${this.rootPath}/${MODULE}/${ONE_RESULT}/:id`, (req, res, next) => {
             this.repository.getResultById(res, req.params.id);
             console.log(`${Helpers.getDateNowString()} request: GET ${ONE_RESULT}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${ONE_RESULT_EX}/:id`, (req, res, next) => {
+            this.repository.getResultByIdEx(res, req.params.id);
+            console.log(`${Helpers.getDateNowString()} request: GET ${ONE_RESULT_EX}. req:${JSON.stringify(req.params)}`);
         });
 
         this.app.get(`/${this.rootPath}/${MODULE}/${PERSON_RESULTS}/:id`, (req, res, next) => {
@@ -38,14 +53,29 @@ class ResultEndpoints {
             console.log(`${Helpers.getDateNowString()} request: GET ${PERSON_RESULTS}. req:${JSON.stringify(req.params)}`);
         });
 
+        this.app.get(`/${this.rootPath}/${MODULE}/${PERSON_RESULTS_EX}/:id`, (req, res, next) => {
+            this.repository.getResultsByPersonIdEx(res, req.params.id);
+            console.log(`${Helpers.getDateNowString()} request: GET ${PERSON_RESULTS_EX}. req:${JSON.stringify(req.params)}`);
+        });
+
         this.app.get(`/${this.rootPath}/${MODULE}/${RACE_RESULTS}/:id`, (req, res, next) => {
             this.repository.getResultsByRaceId(res, req.params.id);
             console.log(`${Helpers.getDateNowString()} request: GET ${RACE_RESULTS}. req:${JSON.stringify(req.params)}`);
         });
 
+        this.app.get(`/${this.rootPath}/${MODULE}/${RACE_RESULTS_EX}/:id`, (req, res, next) => {
+            this.repository.getResultsByRaceIdEx(res, req.params.id);
+            console.log(`${Helpers.getDateNowString()} request: GET ${RACE_RESULTS_EX}. req:${JSON.stringify(req.params)}`);
+        });
+
         this.app.get(`/${this.rootPath}/${MODULE}/${CLUB_RESULTS}/:id`, (req, res, next) => {
             this.repository.getResultsByClubId(res, req.params.id);
             console.log(`${Helpers.getDateNowString()} request: GET ${CLUB_RESULTS}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${CLUB_RESULTS_EX}/:id`, (req, res, next) => {
+            this.repository.getResultsByClubIdEx(res, req.params.id);
+            console.log(`${Helpers.getDateNowString()} request: GET ${CLUB_RESULTS_EX}. req:${JSON.stringify(req.params)}`);
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_RESULT}/`, (req, res, next) => {

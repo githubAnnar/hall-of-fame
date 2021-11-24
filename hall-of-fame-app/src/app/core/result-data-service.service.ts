@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HelpersModule } from '../shared/helpers/helpers.module';
 import { IDeleteResultMessage } from '../shared/idelete-result-message.interface';
+import { IGetResultExMessage } from '../shared/iget-result-ex-message.interface';
 import { IGetResultMessage } from '../shared/iget-result-message.interface';
+import { IGetResultsExMessage } from '../shared/iget-results-ex-message.interface';
 import { IGetResultsMessage } from '../shared/iget-results-message.interface';
 import { IPatchResultMessage } from '../shared/ipatch-result-message.interface';
 import { IPostResultMessage } from '../shared/ipost-result-message.interface';
@@ -29,8 +31,18 @@ export class ResultDataService {
       .pipe(catchError(this.helpers.handleError));
   }
 
+  getAllResultsEx(): Observable<IGetResultsExMessage> {
+    return this.http.get<IGetResultsExMessage>(`${this.baseUrl}getallresultsex`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
   getResultById(id: number): Observable<IGetResultMessage> {
     return this.http.get<IGetResultMessage>(`${this.baseUrl}getresultbyid/${id}`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
+  getResultByIdEx(id: number): Observable<IGetResultExMessage> {
+    return this.http.get<IGetResultExMessage>(`${this.baseUrl}getresultbyidex/${id}`)
       .pipe(catchError(this.helpers.handleError));
   }
 
@@ -39,13 +51,28 @@ export class ResultDataService {
       .pipe(catchError(this.helpers.handleError));
   }
 
+  getResultsByPersonIdEx(id: number): Observable<IGetResultsExMessage> {
+    return this.http.get<IGetResultsExMessage>(`${this.baseUrl}getresultsbypersonidex/${id}`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
   getResultsByRaceId(id: number): Observable<IGetResultsMessage> {
     return this.http.get<IGetResultsMessage>(`${this.baseUrl}getresultsbyraceid/${id}`)
       .pipe(catchError(this.helpers.handleError));
   }
 
+  getResultsByRaceIdEx(id: number): Observable<IGetResultsExMessage> {
+    return this.http.get<IGetResultsExMessage>(`${this.baseUrl}getresultsbyraceidex/${id}`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
   getResultsByClubId(id: number): Observable<IGetResultsMessage> {
     return this.http.get<IGetResultsMessage>(`${this.baseUrl}getresultsbyclubid/${id}`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
+  getResultsByClubIdEx(id: number): Observable<IGetResultsExMessage> {
+    return this.http.get<IGetResultsExMessage>(`${this.baseUrl}getresultsbyclubidex/${id}`)
       .pipe(catchError(this.helpers.handleError));
   }
 
