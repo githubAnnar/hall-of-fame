@@ -42,7 +42,7 @@
             </a>
         </td>
         <td>
-            {{result.Time}}
+            {{result.Time | formattedTime }}
         </td>
     </tr>
     <tr *ngIf="!results || !results.length">

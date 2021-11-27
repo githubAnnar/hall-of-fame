@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { FilterTextboxComponent } from './filter-textbox.component';
 
 @NgModule({
-  declarations: [FilterTextboxComponent],
+  declarations: [
+    FilterTextboxComponent
+  ],
   imports: [
     CommonModule,
     FormsModule
   ],
-  exports: [FilterTextboxComponent]
+  exports: [
+    FilterTextboxComponent
+  ]
 })
-export class SharedModule {
-
-}
+export class SharedModule { }

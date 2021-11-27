@@ -12,9 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { PersonsModule } from './persons/persons.module'
 import { ResultsModule } from './results/results.module';
+import { PipesModule } from './pipes/pipes.module';
+import { FormattedTimePipe } from './pipes/formatted-time.pipe';
 
 @NgModule({
   imports: [
+    SharedModule,
     BrowserModule,
     ReactiveFormsModule,
     RacesModule,
@@ -22,14 +25,15 @@ import { ResultsModule } from './results/results.module';
     PersonsModule,
     ResultsModule,
     AppRoutingModule,
-    SharedModule,
     CoreModule,
+    PipesModule
   ],
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent
-  ],
+  ], 
+  exports:[FormattedTimePipe],
   providers: [],
   bootstrap: [AppComponent]
 })
