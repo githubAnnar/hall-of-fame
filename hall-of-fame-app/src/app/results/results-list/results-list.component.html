@@ -1,0 +1,51 @@
+<table class="table table-hover">
+    <caption>Number of Results: {{ results.length}}
+    </caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" (click)="sort('RaceYear')">
+                Year</th>
+            <th scope="col" (click)="sort('Firstname')">
+                Firstname</th>
+            <th scope="col" (click)="sort('Lastname')">
+                Lastname</th>
+            <th scope="col" (click)="sort('Sex')">
+                Sex</th>
+            <th scope="col" (click)="sort('Clubname')">
+                Clubname</th>
+            <th scope="col" (click)="sort('Time')">
+                Time</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let result of results">
+        <th scope="row"> {{result.ResultId}} </th>
+        <td>
+            <a [routerLink]="['/race', result.RaceId]">
+                {{result.RaceYear}}
+            </a>
+        </td>
+        <td><a [routerLink]="['/person', result.PersonId]">
+                {{result.Firstname}}
+            </a>
+        </td>
+        <td><a [routerLink]="['/person', result.PersonId]">
+                {{result.Lastname}}
+            </a>
+        </td>
+        <td><a [routerLink]="['/person', result.PersonId]">
+                {{result.Sex}}
+            </a>
+        </td>
+        <td><a [routerLink]="['/club', result.ClubId]">
+                {{result.Clubname}}
+            </a>
+        </td>
+        <td>
+            {{result.Time}}
+        </td>
+    </tr>
+    <tr *ngIf="!results || !results.length">
+        <td colspan="3">No results found</td>
+    </tr>
+</table>

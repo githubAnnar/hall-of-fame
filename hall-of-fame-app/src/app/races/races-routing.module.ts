@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RaceComponent } from './race/race.component';
-
 import { RacesComponent } from './races.component';
 
 const routes: Routes = [

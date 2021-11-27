@@ -10,7 +10,8 @@ import { RacesModule } from './races/races.module';
 import { ClubsModule } from './clubs/clubs.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { PersonsModule } from './persons/persons.module';
+import { PersonsModule } from './persons/persons.module'
+import { ResultsModule } from './results/results.module';
 
 @NgModule({
   imports: [
@@ -19,9 +20,10 @@ import { PersonsModule } from './persons/persons.module';
     RacesModule,
     ClubsModule,
     PersonsModule,
+    ResultsModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
   ],
   declarations: [
     AppComponent,
