@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClubDataService } from 'src/app/core/club-data-service.service';
 import { ResultDataService } from 'src/app/core/result-data-service.service';
 import { IClubEx } from 'src/app/shared/iclub-ex.interface';
+import { IClubRevision } from 'src/app/shared/iclub-revision.interface';
 import { IGetClubMessage } from 'src/app/shared/iget-club-message.interface';
+import { IGetClubRevisionsMessage } from 'src/app/shared/iget-club-revisions-message.interface';
 import { IGetResultsExMessage } from 'src/app/shared/iget-results-ex-message.interface';
 import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 
@@ -20,6 +22,10 @@ export class ClubComponent implements OnInit {
 
   results!: IResultEx[];
   getResultsMessage!: IGetResultsExMessage;
+
+  clubRevisions!:IClubRevision[];
+  getClubRevisionsMessage!:IGetClubRevisionsMessage;
+  
   constructor(private clubDataService: ClubDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -60,8 +66,23 @@ export class ClubComponent implements OnInit {
         this.results = this.getResultsMessage.data;
         console.log(`Results Observer got a complete notification for ${this.results.length} order(s)`);
       }
-    }
+    };
 
     this.resultDataService.getResultsByClubIdEx(idSelected).subscribe(resultsGetObserver);
+
+    // Get Club Revisions
+    const clubRevisionsGetObserver={
+      next: (m: IGetClubRevisionsMessage) => {
+        console.log(`ClubRevisions Observer got: ${m.message}`);
+        this.getClubRevisionsMessage = m;
+      },
+      error: (err: string) => { console.error(`ClubRevisions Observer got an error: ${err}`) },
+      complete: () => {
+        this.clubRevisions = this.getClubRevisionsMessage.data;
+        console.log(`ClubRevisions Observer got a complete notification for ${this.results.length} order(s)`);
+      }
+    };
+
+    this.clubDataService.getClubRevisionsById(idSelected).subscribe(clubRevisionsGetObserver);
   }
 }

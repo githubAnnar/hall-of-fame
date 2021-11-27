@@ -7,12 +7,14 @@ import { ClubsListComponent } from './clubs-list/clubs-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ClubComponent } from './club/club.component';
 import { ResultsModule } from '../results/results.module';
+import { ClubRevisionsListComponent } from './club-revisions-list/club-revisions-list.component';
 
 @NgModule({
   declarations: [
     ClubsComponent,
     ClubsListComponent,
-    ClubComponent
+    ClubComponent,
+    ClubRevisionsListComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,10 @@ import { ResultsModule } from '../results/results.module';
     SharedModule,
     ResultsModule
   ],
-  exports: [ClubsComponent]
+  exports: [
+    ClubsComponent,
+    ClubRevisionsListComponent
+  ]
 })
 
 export class ClubsModule { }
