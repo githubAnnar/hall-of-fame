@@ -5,6 +5,7 @@ import { RacesRoutingModule } from './races-routing.module';
 import { RacesComponent } from './races.component';
 import { RacesListComponent } from './races-list/races-list.component';
 import { RaceComponent } from './race/race.component';
+import { ResultsModule } from '../results/results.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RaceComponent } from './race/race.component';
   ],
   imports: [
     CommonModule,
-    RacesRoutingModule
+    RacesRoutingModule,
+    ResultsModule
   ],
   exports: [RacesComponent]
 })

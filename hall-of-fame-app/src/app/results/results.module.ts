@@ -14,6 +14,9 @@ import { ResultsListComponent } from './results-list/results-list.component';
   imports: [
     CommonModule,
     ResultsRoutingModule
+  ],
+  exports: [
+    ResultsListComponent
   ]
 })
 export class ResultsModule { }
