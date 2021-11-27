@@ -3,8 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PersonDataService } from 'src/app/core/person-data-service.service';
 import { ResultDataService } from 'src/app/core/result-data-service.service';
 import { IGetPersonMessage } from 'src/app/shared/iget-person-message.interface';
+import { IGetPersonRevisionsMessage } from 'src/app/shared/iget-person-revisions-message.interface';
 import { IGetResultsExMessage } from 'src/app/shared/iget-results-ex-message.interface';
 import { IPersonEx } from 'src/app/shared/iperson-ex.interface';
+import { IPersonRevision } from 'src/app/shared/iperson-revision.interface';
 import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 
 @Component({
@@ -20,6 +22,9 @@ export class PersonComponent implements OnInit {
 
   results!: IResultEx[];
   getResultsMessage!: IGetResultsExMessage;
+
+  personRevisions!: IPersonRevision[];
+  getPersonRevisionsMessage!: IGetPersonRevisionsMessage;
 
   constructor(private personDataService: PersonDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router) { }
 
@@ -64,5 +69,20 @@ export class PersonComponent implements OnInit {
     }
 
     this.resultDataService.getResultsByPersonIdEx(idSelected).subscribe(resultsGetObserver);
+
+    // Get Person Revisions
+    const personRevisionsGetObserver = {
+      next: (m: IGetPersonRevisionsMessage) => {
+        console.log(`PersonRevisions Observer got: ${m.message}`);
+        this.getPersonRevisionsMessage = m;
+      },
+      error: (err: string) => { console.error(`PersonRevisions Observer got an error: ${err}`) },
+      complete: () => {
+        this.personRevisions = this.getPersonRevisionsMessage.data;
+        console.log(`PersonRevisions Observer got a complete notification for ${this.results.length} order(s)`);
+      }
+    };
+
+    this.personDataService.getPersonRevisionsById(idSelected).subscribe(personRevisionsGetObserver);
   }
 }

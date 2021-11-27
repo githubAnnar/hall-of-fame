@@ -1,0 +1,36 @@
+<table class="table table-hover">
+    <caption>Number of Person revisions: {{ personRevisions.length}}
+    </caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" (click)="sort('Firstname')">
+                Firstname</th>
+            <th scope="col" (click)="sort('Lastname')">
+                Lastname
+            </th>
+            <th scope="col" (click)="sort('Updated')">
+                Updated</th>
+            <th scope="col">
+                Sex</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let revision of personRevisions">
+        <th scope="row"> {{revision.Id}} </th>
+        <td>
+            {{revision.Firstname | titlecase}}
+        </td>
+        <td>
+            {{revision.Lastname | titlecase}}
+        </td>
+        <td>
+            {{revision.Updated }}
+        </td>
+        <td>
+            {{revision.Sex }}
+        </td>
+    </tr>
+    <tr *ngIf="!personRevisions || !personRevisions.length">
+        <td colspan="3">No person revisions found</td>
+    </tr>
+</table>

@@ -7,11 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 import { PersonsComponent } from './persons.component';
 import { PersonComponent } from './person/person.component';
 import { ResultsModule } from '../results/results.module';
+import { PersonRevisionsListComponent } from './person-revisions-list/person-revisions-list.component';
 
 @NgModule({
   declarations: [
     PersonsComponent,
-    PersonsListComponent, PersonComponent
+    PersonsListComponent, PersonComponent, PersonRevisionsListComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +20,10 @@ import { ResultsModule } from '../results/results.module';
     SharedModule,
     ResultsModule
   ],
-  exports: [PersonsComponent]
+  exports: [
+    PersonsComponent,
+    PersonRevisionsListComponent
+  ]
 })
 
 export class PersonsModule { }
