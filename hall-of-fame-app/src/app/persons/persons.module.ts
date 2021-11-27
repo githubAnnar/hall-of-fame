@@ -5,18 +5,21 @@ import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsListComponent } from './persons-list/persons-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { PersonsComponent } from './persons.component';
+import { PersonComponent } from './person/person.component';
+import { ResultsModule } from '../results/results.module';
 
 @NgModule({
   declarations: [
-    PersonsComponent, 
-    PersonsListComponent
+    PersonsComponent,
+    PersonsListComponent, PersonComponent
   ],
   imports: [
     CommonModule,
     PersonsRoutingModule,
-    SharedModule
+    SharedModule,
+    ResultsModule
   ],
-  exports:[PersonsComponent]
+  exports: [PersonsComponent]
 })
 
 export class PersonsModule { }
