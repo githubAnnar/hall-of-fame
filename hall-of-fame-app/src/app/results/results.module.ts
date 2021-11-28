@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ResultsRoutingModule } from './results-routing.module';
 import { ResultsComponent } from './results.component';
 import { ResultsListComponent } from './results-list/results-list.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ResultsListComponent } from './results-list/results-list.component';
   ],
   imports: [
     CommonModule,
-    ResultsRoutingModule
+    ResultsRoutingModule,
+    PipesModule
   ],
   exports: [
     ResultsListComponent

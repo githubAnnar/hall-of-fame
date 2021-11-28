@@ -7,10 +7,9 @@ export class FormattedTimePipe implements PipeTransform {
 
   transform(value: number): string {
     // get hours
-    const hours = Math.round((value / 3600) + 0.5);
-    const minute = Math.round((value / 60) + 0.5);
-    const second = value - (hours * 3600) - (minute * 60);
-    return `${hours}:${minute}:${second}`
+    const hours = Math.floor(value / 3600);
+    const minute = Math.floor(value / 60);
+    const second = (value - (hours * 3600) - (minute * 60));
+    return `${hours}:${minute}:${second.toLocaleString('nb-no', { minimumIntegerDigits: 2, minimumFractionDigits: 1, useGrouping: false })}`
   }
-
 }
