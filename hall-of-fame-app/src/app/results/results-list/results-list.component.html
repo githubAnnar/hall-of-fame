@@ -34,7 +34,7 @@
             </a>
         </td>
         <td><a [routerLink]="['/person', result.PersonId]">
-                {{result.Sex}}
+                {{result.Sex | sex }}
             </a>
         </td>
         <td><a [routerLink]="['/club', result.ClubId]">

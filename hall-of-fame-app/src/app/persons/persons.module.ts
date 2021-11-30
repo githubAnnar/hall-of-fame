@@ -8,6 +8,7 @@ import { PersonsComponent } from './persons.component';
 import { PersonComponent } from './person/person.component';
 import { ResultsModule } from '../results/results.module';
 import { PersonRevisionsListComponent } from './person-revisions-list/person-revisions-list.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PersonRevisionsListComponent } from './person-revisions-list/person-rev
     CommonModule,
     PersonsRoutingModule,
     SharedModule,
-    ResultsModule
+    ResultsModule,
+    PipesModule
   ],
   exports: [
     PersonsComponent,

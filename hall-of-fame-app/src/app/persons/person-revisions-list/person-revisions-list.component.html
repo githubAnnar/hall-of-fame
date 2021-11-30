@@ -18,16 +18,16 @@
     <tr *ngFor="let revision of personRevisions">
         <th scope="row"> {{revision.Id}} </th>
         <td>
-            {{revision.Firstname | titlecase}}
+            {{revision.Firstname}}
         </td>
         <td>
-            {{revision.Lastname | titlecase}}
+            {{revision.Lastname}}
         </td>
         <td>
             {{revision.Updated }}
         </td>
         <td>
-            {{revision.Sex }}
+            {{revision.Sex | sex}}
         </td>
     </tr>
     <tr *ngIf="!personRevisions || !personRevisions.length">
