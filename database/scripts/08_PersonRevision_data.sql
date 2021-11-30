@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (1,1,'Alexander','Sterk-Hansen','2013',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (2,2,'Anders Gustav','Birkeland','2010',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (3,3,'Anders','Smith','2012',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (2,2,'Anders','Gustav Birkeland','2010',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (3,3,'Anders','Smith','2010',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (4,4,'Andreas','Sivertsen','2015',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (5,5,'Ane','Iversen','2019',2);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (6,6,'Anette','Heggemsli','2021',2);
@@ -71,7 +71,7 @@ INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (70,70,'Knut T','Ugland','2015',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (71,71,'Kristian Lund','Kristiansen','2013',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (72,72,'Kristian','Pedersen','2014',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (73,73,'Kurt Jr','Snemyr','2015',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (73,73,'Kurt','Snemyr Jr.','2015',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (74,74,'Kåre','Hørte','2011',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (75,75,'Kåre-Ivar','Ohrvik','2019',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (76,76,'Kåre','Voreland','2011',1);
@@ -139,7 +139,7 @@ INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (138,138,'Trond W','Noble','2018',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (139,139,'Trond-Lauritz','Larsen','2015',1);
 INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (140,140,'Vegar','Strømman','2011',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (141,141,'Ørjan','Svaland','2018',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (142,142,'Åge','Larsen','2014',1);
-INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (143,143,'Åsmund','Sivertsen','2011',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (141,141,'Åge','Larsen','2014',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (142,142,'Åsmund','Sivertsen','2011',1);
+INSERT INTO "PersonRevision" ("Id","PersonId","Firstname","Lastname","Updated","Sex") VALUES (143,143,'Ørjan','Svaland','2018',1);
 COMMIT;
