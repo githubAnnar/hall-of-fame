@@ -16,18 +16,36 @@ export class ResultsListComponent implements OnInit {
 
   set listResults(value: IResultEx[]) {
     if (value) {
-      this.results = this._results = value;
+      this.filteredResults = this._results = value;
     }
   }
 
-  results: any[] = [];
+  filteredResults: any[] = [];
 
   constructor(private sorterService: SorterService) { }
 
   ngOnInit(): void {
   }
 
+  filter(data: string) {
+    if (data) {
+      this.filteredResults = this.listResults.filter((result: IResultEx) => {
+        if (data === "0") {
+          return result;
+        }
+
+        if (data === "1") {
+          return result.Sex === 1;
+        }
+
+        return result.Sex === 2;
+      });
+    } else {
+      this.filteredResults = this.listResults;
+    }
+  }
+
   sort(prop: string) {
-    this.sorterService.sort(this.results, prop);
+    this.sorterService.sort(this.filteredResults, prop);
   }
 }
