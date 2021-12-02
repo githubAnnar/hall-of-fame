@@ -1,28 +1,32 @@
 <div class="card-group">
-    <div class="card col-12">
-        <h3 class="card-header">{{title}}</h3>
-        <div class="card-body">
-            <p>Id: {{person.Id}}</p>
-            <p>Firstname: {{person.Firstname}}</p>
-            <p>Lastname: {{person.Lastname}}</p>
-            <p>Updated: {{person.Updated}}</p>
-            <p>Sex: {{person.Sex | sex}}</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card col-md-6 col-12">
+                <h3 class="card-header">{{title}}</h3>
+                <div class="card-body">
+                    <p>Id: {{person.Id}}</p>
+                    <p>Firstname: {{person.Firstname}}</p>
+                    <p>Lastname: {{person.Lastname}}</p>
+                    <p>Updated: {{person.Updated}}</p>
+                    <p>Sex: {{person.Sex | sex}}</p>
+                </div>
+            </div>
+            <div class="card col-md-6 col-12">
+                <h3 class="card-header">Revisions</h3>
+                <div class="card-body">
+                    <app-person-revisions-list class="card-body" [listRevisions]="personRevisions">
+                    </app-person-revisions-list>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="card col-12">
-        <h3 class="card-header">Revisions</h3>
-        <div class="card-body">
-            <app-person-revisions-list class="card-body" [listRevisions]="personRevisions">
-            </app-person-revisions-list>
-        </div>
-    </div>
-
-    <div class="card col-12">
-        <h3 class="card-header">Results</h3>
-        <div class="card-body">
-            <app-results-list class="card-body" [listResults]="results">
-            </app-results-list>
+        <div class="row">
+            <div class="card col-12">
+                <h3 class="card-header">Results</h3>
+                <div class="card-body">
+                    <app-results-list class="card-body" [listResults]="results">
+                    </app-results-list>
+                </div>
+            </div>
         </div>
     </div>
 </div>

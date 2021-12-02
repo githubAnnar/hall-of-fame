@@ -8,7 +8,7 @@
     </caption>
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Id</th>
+            <th>No.</th>
             <th scope="col" (click)="sort('RaceYear')">
                 Year</th>
             <th scope="col" (click)="sort('Firstname')">
@@ -23,8 +23,8 @@
                 Time</th>
         </tr>
     </thead>
-    <tr *ngFor="let result of filteredResults">
-        <th scope="row"> {{result.ResultId}} </th>
+    <tr *ngFor="let result of filteredResults;let i = index">
+        <th scope="row">{{i+1}}</th>
         <td>
             <a [routerLink]="['/race', result.RaceId]">
                 {{result.RaceYear}}
