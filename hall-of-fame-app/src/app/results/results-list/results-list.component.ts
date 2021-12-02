@@ -9,6 +9,7 @@ import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 })
 export class ResultsListComponent implements OnInit {
   private _results: IResultEx[] = [];
+  private _showGenderFilter: boolean = false;
 
   @Input() get listResults(): IResultEx[] {
     return this._results;
@@ -20,6 +21,17 @@ export class ResultsListComponent implements OnInit {
     }
   }
 
+  @Input() get showGenderFilter(): boolean {
+    return this._showGenderFilter;
+  }
+
+  set showGenderFilter(value: boolean) {
+    if (value) {
+      this.showFilter = this._showGenderFilter = value;
+    }
+  }
+
+  showFilter: boolean = false;
   filteredResults: any[] = [];
 
   constructor(private sorterService: SorterService) { }

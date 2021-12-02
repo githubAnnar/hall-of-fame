@@ -1,7 +1,7 @@
-<div class="btn-group" role="group" aria-label="Filter">
+<div *ngIf="showFilter" class="btn-group" role="group" aria-label="Filter">
     <button type="button" class="btn btn-primary" (click)="filter('0')">Both</button>
     <button type="button" class="btn btn-primary" (click)="filter('1')">Men</button>
-    <button type="button" class="btn btn-primary" (click)="filter('2')">Woman</button>
+    <button type="button" class="btn btn-primary" (click)="filter('2')">Women</button>
 </div><br /><br />
 <table class="table table-hover">
     <caption>Number of Results: {{ filteredResults.length}}
