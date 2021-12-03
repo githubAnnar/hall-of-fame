@@ -9,7 +9,7 @@ export interface IResultEx {
     Firstname:string;
     Lastname:string;
     PersonUpdated:number;
-    Sex:number;
+    Gender:number;
     ClubRevisionId:number;
     ClubId:number;
     ClubName:string;

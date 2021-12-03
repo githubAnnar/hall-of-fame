@@ -4,7 +4,7 @@ CREATE TABLE "PersonRevision" (
 	"Firstname"	TEXT NOT NULL,
 	"Lastname"	TEXT NOT NULL,
 	"Updated"	TEXT,
-	"Sex"	INTEGER NOT NULL,
+	"Gender"	INTEGER NOT NULL,
 	PRIMARY KEY("Id" AUTOINCREMENT),
 	FOREIGN KEY("PersonId") REFERENCES "Person"("Id")
 )

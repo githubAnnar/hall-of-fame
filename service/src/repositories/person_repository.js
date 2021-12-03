@@ -8,7 +8,7 @@ class PersonRepository {
 
     // Get all persons
     getAllPersons(res) {
-        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Sex FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId';
+        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -26,7 +26,7 @@ class PersonRepository {
 
     // Get person by Id
     getPersonById(res, id) {
-        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Sex FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId WHERE Person.Id = ?'
+        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId WHERE Person.Id = ?'
         var params = [id];
         this.db.get(sql, params, (err, row) => {
             if (err) {
@@ -44,7 +44,7 @@ class PersonRepository {
 
     // Get person revisions
     getPersonRevisionsById(res, id) {
-        var sql = 'SELECT Id, PersonId, Firstname, Lastname, Updated, Sex FROM PersonRevision WHERE PersonId = ? ORDER BY Updated';
+        var sql = 'SELECT Id, PersonId, Firstname, Lastname, Updated, Gender FROM PersonRevision WHERE PersonId = ? ORDER BY Updated';
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -63,7 +63,7 @@ class PersonRepository {
 
     // Get person revisions by race
     getPersonRevisionsByRaceId(res, id) {
-        var sql = 'SELECT PR.Id, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated, PR.Sex FROM PersonRevision PR INNER JOIN Result R ON PR.Id = R.PersonRevisionId WHERE R.RaceId = ?';
+        var sql = 'SELECT PR.Id, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated, PR.Gender FROM PersonRevision PR INNER JOIN Result R ON PR.Id = R.PersonRevisionId WHERE R.RaceId = ?';
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -81,7 +81,7 @@ class PersonRepository {
     }
 
     // Insert new revision for person by id
-    insertPersonRevisionById(res, id, firstName, lastName, updateYear, sex) {
+    insertPersonRevisionById(res, id, firstName, lastName, updateYear, Gender) {
         var errors = [];
 
         if (!id) {
@@ -100,8 +100,8 @@ class PersonRepository {
             errors.push("No update year is specified!");
         }
 
-        if (!sex) {
-            errors.push("No sex is specified!");
+        if (!Gender) {
+            errors.push("No Gender is specified!");
         }
 
         if (errors.length) {
@@ -115,11 +115,11 @@ class PersonRepository {
             FirstName: firstName,
             LastName: lastName,
             Updated: updateYear,
-            Sex: sex
+            Gender: Gender
         };
 
-        var sql = 'INSERT INTO PersonRevision (PersonId, Firstname, Lastname, Updated, Sex) VALUES (?, ?, ?, ?, ?)';
-        var params = [data.PersonId, data.FirstName, data.LastName, data.Updated, data.Sex];
+        var sql = 'INSERT INTO PersonRevision (PersonId, Firstname, Lastname, Updated, Gender) VALUES (?, ?, ?, ?, ?)';
+        var params = [data.PersonId, data.FirstName, data.LastName, data.Updated, data.Gender];
         this.db.serialize(() => {
             this.db.run(sql, params, (err) => {
                 if (err) {
@@ -129,7 +129,7 @@ class PersonRepository {
                 }
             });
 
-            this.db.get("SELECT Id, PersonId, Firstname, Lastname, Updated, Sex FROM PersonRevision WHERE Id = (SELECT seq FROM sqlite_sequence WHERE name = 'PersonRevision')", [], (err, row) => {
+            this.db.get("SELECT Id, PersonId, Firstname, Lastname, Updated, Gender FROM PersonRevision WHERE Id = (SELECT seq FROM sqlite_sequence WHERE name = 'PersonRevision')", [], (err, row) => {
                 if (err) {
                     console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                     res.status(400).json({ "error": err.message })
@@ -146,7 +146,7 @@ class PersonRepository {
     }
 
     // Insert new person
-    insertNewPerson(res, firstName, lastName, updateYear, sex) {
+    insertNewPerson(res, firstName, lastName, updateYear, Gender) {
         var errors = [];
 
         if (!firstName) {
@@ -161,8 +161,8 @@ class PersonRepository {
             errors.push("No update year is specified!");
         }
 
-        if (!sex) {
-            errors.push("No sex is specified!");
+        if (!Gender) {
+            errors.push("No Gender is specified!");
         }
 
         if (errors.length) {
@@ -175,7 +175,7 @@ class PersonRepository {
             FirstName: firstName,
             LastName: lastName,
             Updated: updateYear,
-            Sex: sex
+            Gender: Gender
         };
 
         var sql = 'INSERT INTO Person DEFAULT VALUES';
@@ -197,7 +197,7 @@ class PersonRepository {
                 personRow = row;
                 console.log(`${Helpers.getDateNowString()} insertNewPerson inserted row: ${JSON.stringify(personRow)}`);
 
-                this.db.run('INSERT INTO PersonRevision (PersonId, Firstname, Lastname, Updated, Sex) VALUES (?, ?, ?, ?, ?)', [personRow.Id, data.FirstName, data.LastName, data.Updated, data.Sex], (err) => {
+                this.db.run('INSERT INTO PersonRevision (PersonId, Firstname, Lastname, Updated, Gender) VALUES (?, ?, ?, ?, ?)', [personRow.Id, data.FirstName, data.LastName, data.Updated, data.Gender], (err) => {
                     if (err) {
                         console.error(`${Helpers.getDateNowString()} INSERT 2 ERROR: ${err.message}`);
                         res.status(400).json({ "error": err.message });

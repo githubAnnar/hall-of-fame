@@ -13,20 +13,20 @@
                 Lastname</th>
             <th scope="col" (click)="sort('Updated')">
                 Updated</th>
-            <th scope="col" (click)="sort('Sex')">
-                Sex</th>
+            <th scope="col" (click)="sort('Gender')">
+                Gender</th>
         </tr>
     </thead>
     <tr *ngFor="let person of filteredPersons">
         <th scope="row"> {{person.Id}} </th>
         <td>
             <a [routerLink]="['/person', person.Id]">
-                {{person.Firstname | titlecase}}
+                {{person.Firstname}}
             </a>
         </td>
         <td>
             <a [routerLink]="['/person', person.Id]">
-                {{person.Lastname | titlecase}}
+                {{person.Lastname}}
             </a>
         </td>
         <td>
@@ -36,7 +36,7 @@
         </td>
         <td>
             <a [routerLink]="['/person', person.Id]">
-                {{person.Sex | sex}}
+                {{person.Gender | gender}}
             </a>
         </td>
     </tr>

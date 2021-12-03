@@ -26,7 +26,7 @@ class ResultRepository {
 
     // Returns IResultEx
     getAllResultsEx(res) {
-        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Sex, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id ORDER BY RE.Time ASC';
+        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Gender, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id ORDER BY RE.Time ASC';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -62,7 +62,7 @@ class ResultRepository {
 
     // Get result by Id, returns IResultEx
     getResultByIdEx(res, id) {
-        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Sex, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE RE.Id = ?'
+        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Gender, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE RE.Id = ?'
         var params = [id];
         this.db.get(sql, params, (err, row) => {
             if (err) {
@@ -98,7 +98,7 @@ class ResultRepository {
 
     // Get all results by person id, returns IResultEx
     getResultsByPersonIdEx(res, id) {
-        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Sex, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE PR.PersonId = ? ORDER BY RE.Time'
+        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Gender, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE PR.PersonId = ? ORDER BY RE.Time'
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -134,7 +134,7 @@ class ResultRepository {
 
     // Get all results by Race id, returns IResultEx
     getResultsByRaceIdEx(res, id) {
-        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Sex, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE RE.RaceId = ? ORDER BY RE.Time'
+        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Gender, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE RE.RaceId = ? ORDER BY RE.Time'
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -170,7 +170,7 @@ class ResultRepository {
 
     // Get all results by Club id, returns IRaceEx
     getResultsByClubIdEx(res, id) {
-        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Sex, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE CR.ClubId = ? ORDER BY RE.Time'
+        var sql = 'SELECT RE.Id AS ResultId, RE.Time, RA.Id AS RaceId, RA.Year AS RaceYear, RA.Length AS RaceLength, PR.Id AS PersonRevisioinId, PR.PersonId, PR.Firstname, PR.Lastname, PR.Updated AS PersonUpdated, PR.Gender, CR.Id AS ClubRevisionId, CR.ClubId, CR.Name AS ClubName, CR.Updated AS ClubUpdated FROM Result RE LEFT JOIN Race RA ON RE.RaceId = RA.Id INNER JOIN PersonRevision PR ON RE.PersonRevisionId = PR.Id INNER JOIN ClubRevision CR ON RE.ClubRevisionId = CR.Id WHERE CR.ClubId = ? ORDER BY RE.Time'
         var params = [id];
         this.db.all(sql, params, (err, rows) => {
             if (err) {

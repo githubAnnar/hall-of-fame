@@ -15,8 +15,8 @@
                 Firstname</th>
             <th scope="col" (click)="sort('Lastname')">
                 Lastname</th>
-            <th scope="col" (click)="sort('Sex')">
-                Sex</th>
+            <th scope="col" (click)="sort('Gender')">
+                Gender</th>
             <th scope="col" (click)="sort('Clubname')">
                 Clubname</th>
             <th scope="col" (click)="sort('Time')">
@@ -39,7 +39,7 @@
             </a>
         </td>
         <td><a [routerLink]="['/person', result.PersonId]">
-                {{result.Sex | sex }}
+                {{result.Gender | gender }}
             </a>
         </td>
         <td><a [routerLink]="['/club', result.ClubId]">

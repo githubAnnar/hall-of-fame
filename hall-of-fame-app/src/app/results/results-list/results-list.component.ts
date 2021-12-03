@@ -47,10 +47,10 @@ export class ResultsListComponent implements OnInit {
         }
 
         if (data === "1") {
-          return result.Sex === 1;
+          return result.Gender === 1;
         }
 
-        return result.Sex === 2;
+        return result.Gender === 2;
       });
     } else {
       this.filteredResults = this.listResults;

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { FormattedTimePipe } from './formatted-time.pipe';
-import { SexPipe } from './sex.pipe';
+import { GenderPipe } from './gender.pipe';
 
 @NgModule({
   declarations: [
     FormattedTimePipe,
-    SexPipe
+    GenderPipe
   ],
   imports: [
   ],
   exports: [
     FormattedTimePipe,
-    SexPipe
+    GenderPipe
   ]
 })
 

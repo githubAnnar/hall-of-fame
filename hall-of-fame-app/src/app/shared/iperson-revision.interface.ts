@@ -4,5 +4,5 @@ export interface IPersonRevision {
     Firstname: string;
     Lastname: string;
     Updated: string;
-    Sex: number;
+    Gender: number;
 }

@@ -12,7 +12,7 @@
             <th scope="col" (click)="sort('Updated')">
                 Updated</th>
             <th scope="col">
-                Sex</th>
+                Gender</th>
         </tr>
     </thead>
     <tr *ngFor="let revision of personRevisions">
@@ -27,7 +27,7 @@
             {{revision.Updated }}
         </td>
         <td>
-            {{revision.Sex | sex}}
+            {{revision.Gender | gender}}
         </td>
     </tr>
     <tr *ngIf="!personRevisions || !personRevisions.length">
