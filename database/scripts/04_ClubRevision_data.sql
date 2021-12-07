@@ -11,9 +11,8 @@ INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (9,9,'Gjersta
 INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (10,10,'Grimstad SK','2011');
 INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (11,11,'KCK','2011');
 INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (12,12,'Lund CK','2015');
-INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (13,13,'MCK','2018');
-INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (14,14,'Mandal CK','2019');
-INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (15,15,'Plussbank Cervelo','2011');
-INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (16,16,'Søgne CK','2019');
-INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (17,17,'TOSK','2012');
+INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (13,13,'Mandal CK','2018');
+INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (14,14,'Plussbank Cervelo','2011');
+INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (15,15,'Søgne CK','2019');
+INSERT INTO "ClubRevision" ("Id","ClubId","Name","Updated") VALUES (16,16,'TOSK','2012');
 COMMIT;

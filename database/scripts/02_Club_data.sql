@@ -15,5 +15,4 @@ INSERT INTO "Club" ("Id") VALUES (13);
 INSERT INTO "Club" ("Id") VALUES (14);
 INSERT INTO "Club" ("Id") VALUES (15);
 INSERT INTO "Club" ("Id") VALUES (16);
-INSERT INTO "Club" ("Id") VALUES (17);
 COMMIT;

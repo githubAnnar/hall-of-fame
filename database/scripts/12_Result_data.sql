@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (1,9,36,11,764.1);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (2,9,59,11,782.9);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (3,9,1,11,789.8);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (4,2,142,15,790.5);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (4,2,142,14,790.5);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (5,9,26,11,790.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (6,5,86,10,791.2);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (7,9,142,2,792.6);
@@ -18,7 +18,7 @@ INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") 
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (17,5,135,10,814.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (18,5,130,6,815.0);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (19,5,1,10,816.3);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (20,10,15,16,818.4);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (20,10,15,15,818.4);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (21,4,135,10,819.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (22,2,112,2,821.2);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (23,4,122,11,821.2);
@@ -46,7 +46,7 @@ INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") 
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (45,7,90,3,847.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (46,12,109,3,847.9);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (47,6,3,2,849.1);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (48,10,51,16,849.2);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (48,10,51,15,849.2);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (49,7,38,1,850.0);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (50,6,70,10,851.0);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (51,6,20,6,851.9);
@@ -56,10 +56,10 @@ INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") 
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (55,5,90,3,853.5);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (56,1,3,2,854.5);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (57,7,130,6,855.7);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (58,3,19,17,857.2);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (58,3,19,16,857.2);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (59,5,3,2,858.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (60,10,109,3,859.4);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (61,3,109,17,859.8);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (61,3,109,16,859.8);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (62,5,72,6,860.0);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (63,7,20,6,860.3);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (64,3,64,2,860.5);
@@ -92,7 +92,7 @@ INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") 
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (91,12,90,3,877.7);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (92,7,121,4,878.8);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (93,5,120,3,879.2);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (94,4,19,17,879.7);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (94,4,19,16,879.7);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (95,8,127,1,881.7);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (96,12,100,3,882.4);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (97,8,112,3,884.2);
@@ -122,7 +122,7 @@ INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") 
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (121,3,46,2,905.9);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (122,9,138,13,907.5);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (123,2,33,3,907.6);
-INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (124,10,138,14,908.0);
+INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (124,10,138,13,908.0);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (125,7,100,3,908.6);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (126,12,103,3,909.4);
 INSERT INTO "Result" ("Id","RaceId","PersonRevisionId","ClubRevisionId","Time") VALUES (127,10,114,11,910.4);

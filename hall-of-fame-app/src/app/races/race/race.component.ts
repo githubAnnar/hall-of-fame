@@ -15,7 +15,7 @@ import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 export class RaceComponent implements OnInit {
   title!: string;
 
-  race!: IRace;
+  race: IRace = { Id: 0, Length: 0, Year: 0 };
   getRaceMessage!: IGetRaceMessage;
 
   results!: IResultEx[];

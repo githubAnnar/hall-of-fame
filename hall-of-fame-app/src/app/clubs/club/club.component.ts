@@ -17,15 +17,15 @@ import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 export class ClubComponent implements OnInit {
   title!: string;
 
-  club!: IClubEx;
+  club: IClubEx = { Id: 0, Name: "No Name", Updated: "No Update" };
   getClubMessage!: IGetClubMessage;
 
   results!: IResultEx[];
   getResultsMessage!: IGetResultsExMessage;
 
-  clubRevisions!:IClubRevision[];
-  getClubRevisionsMessage!:IGetClubRevisionsMessage;
-  
+  clubRevisions!: IClubRevision[];
+  getClubRevisionsMessage!: IGetClubRevisionsMessage;
+
   constructor(private clubDataService: ClubDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class ClubComponent implements OnInit {
     this.resultDataService.getResultsByClubIdEx(idSelected).subscribe(resultsGetObserver);
 
     // Get Club Revisions
-    const clubRevisionsGetObserver={
+    const clubRevisionsGetObserver = {
       next: (m: IGetClubRevisionsMessage) => {
         console.log(`ClubRevisions Observer got: ${m.message}`);
         this.getClubRevisionsMessage = m;
