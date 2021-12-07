@@ -31,7 +31,7 @@ class RaceEndpoints {
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_RACE}/`, (req, res, next) => {
-            this.repository.insertNewRace(res, req.body.year, req.body.length);
+            this.repository.insertNewRace(res, req.body.Year, req.body.Length);
             console.log(`${Helpers.getDateNowString()} request: POST ${ADD_RACE}. req: ${JSON.stringify(req.body)}`);
         });
 
