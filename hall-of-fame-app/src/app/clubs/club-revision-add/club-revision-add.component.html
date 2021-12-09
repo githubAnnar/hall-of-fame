@@ -1,0 +1,27 @@
+<div class="card">
+    <h3 class="card-header">Add Club Revision</h3>
+    <div class="card-body">
+        <form [formGroup]="formClubRevisionAdd" (submit)="send()">
+            <div class="form-group">
+                <label for="clubId">ClubId</label>
+                <input class="form-control" id="clubId" type="number" formControlName="clubidinput" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="name">New Name</label>
+                <input class="form-control" id="name" type="text" formControlName="nameinput" />
+            </div>
+            <div class="form-group">
+                <label for="year">Updated Year</label>
+                <input class="form-control" id="year" type="number" formControlName="yearinput" readonly/>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!formClubRevisionAdd.valid">Submit</button>
+            <div *ngIf="!formClubRevisionAdd.valid">
+                <p class="alert alert-danger">Damn...
+                    Trouble!!</p>
+                <p class="alert alert-primary" *ngIf="!isNameOk()">
+                    Need a new Name
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

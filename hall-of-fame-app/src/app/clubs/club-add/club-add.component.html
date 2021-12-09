@@ -1,0 +1,26 @@
+<div class="card">
+    <h3 class="card-header">Add Club</h3>
+    <div class="card-body">
+        <form [formGroup]="formClubAdd" (submit)="send()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" type="text" formControlName="nameinput" />
+            </div>
+            <div class="form-group">
+                <label for="year">Updated Year</label>
+                <input class="form-control" id="year" type="number" formControlName="yearinput" />
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!formClubAdd.valid">Submit</button>
+            <div *ngIf="!formClubAdd.valid">
+                <p class="alert alert-danger">Damn...
+                    Trouble!!</p>
+                <p class="alert alert-primary" *ngIf="!isYearOk()">
+                    Need a Year
+                </p>
+                <p class="alert alert-primary" *ngIf="!isNameOk()">
+                    Need a Name
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

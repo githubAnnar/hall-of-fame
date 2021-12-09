@@ -8,6 +8,11 @@
                     <p>Name: {{club.Name}}</p>
                     <p>Updated: {{club.Updated}}</p>
                 </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" [routerLink]="['/clubrevisionadd', club.Id]">
+                        Add New Revision
+                    </button>
+                </div>
             </div>
             <div class="card col-md-6 col-12">
                 <h3 class="card-header">Revisions</h3>

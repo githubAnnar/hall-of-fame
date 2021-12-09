@@ -31,7 +31,7 @@ export class ClubsListComponent implements OnInit {
     if (data) {
       this.filteredClubs = this.listClubs.filter((club: IClubEx) => {
         return club.Name.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
-          club.Updated.toLowerCase().indexOf(data.toLowerCase()) > -1;
+          club.Updated.toString().indexOf(data) > -1;
       });
     } else {
       this.filteredClubs = this.listClubs;

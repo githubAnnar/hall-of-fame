@@ -17,7 +17,7 @@ import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 export class ClubComponent implements OnInit {
   title!: string;
 
-  club: IClubEx = { Id: 0, Name: "No Name", Updated: "No Update" };
+  club: IClubEx = { Id: 0, Name: "No Name", Updated: 0 };
   getClubMessage!: IGetClubMessage;
 
   results!: IResultEx[];
@@ -64,7 +64,7 @@ export class ClubComponent implements OnInit {
       error: (err: string) => { console.error(`Results Observer got an error: ${err}`) },
       complete: () => {
         this.results = this.getResultsMessage.data;
-        console.log(`Results Observer got a complete notification for ${this.results.length} order(s)`);
+        console.log(`Results Observer got a complete notification for ${this.results.length} result(s)`);
       }
     };
 
