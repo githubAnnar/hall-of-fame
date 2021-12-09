@@ -8,7 +8,7 @@ class ClubRepository {
 
     // Get all clubs
     getAllClubs(res) {
-        var sql = 'SELECT Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Updated = (SELECT MAX(Updated) FROM ClubRevision cr2 WHERE cr2.Id = cr1.Id)) cr ON club.Id = cr.ClubId';
+        var sql = 'SELECT Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Updated = (SELECT MAX(Updated) FROM ClubRevision cr2 WHERE cr2.ClubId = cr1.ClubId)) cr ON club.Id = cr.ClubId';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -26,7 +26,7 @@ class ClubRepository {
 
     // Get Club by Id
     getClubById(res, id) {
-        var sql = 'SELECT Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Updated = (SELECT MAX(Updated) FROM ClubRevision cr2 WHERE cr2.Id = cr1.Id)) cr ON club.Id = cr.ClubId WHERE Club.Id = ?'
+        var sql = 'SELECT Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Id = (SELECT MAX(Id) FROM ClubRevision cr2 WHERE cr2.ClubId = cr1.ClubId)) cr ON club.Id = cr.ClubId WHERE Club.Id = ?'
         var params = [id];
         this.db.get(sql, params, (err, row) => {
             if (err) {
