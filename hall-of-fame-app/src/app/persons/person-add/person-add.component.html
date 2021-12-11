@@ -1,0 +1,37 @@
+<div class="card">
+    <h3 class="card-header">Add Person</h3>
+    <div class="card-body">
+        <form [formGroup]="formPersonAdd" (submit)="send()">
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input class="form-control" id="firstname" type="text" formControlName="firstnameinput" />
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input class="form-control" id="lastname" type="text" formControlName="lastnameinput" />
+            </div>
+            <div class="form-group">
+                <label for="year">Updated Year</label>
+                <input class="form-control" id="year" type="number" formControlName="yearinput" />
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input class="form-control" id="gender" type="radio" formControlName="genderinput" />
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!formPersonAdd.valid">Submit</button>
+            <div *ngIf="!formPersonAdd.valid">
+                <p class="alert alert-danger">Damn...
+                    Trouble!!</p>
+                <p class="alert alert-primary" *ngIf="!isYearOk()">
+                    Need a Year
+                </p>
+                <p class="alert alert-primary" *ngIf="!isFirstnameOk()">
+                    Need a Firstame
+                </p>
+                <p class="alert alert-primary" *ngIf="!isLastnameOk()">
+                    Need a Lastname
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

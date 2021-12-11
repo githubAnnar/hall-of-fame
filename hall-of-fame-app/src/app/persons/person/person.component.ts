@@ -17,7 +17,7 @@ import { IResultEx } from 'src/app/shared/iresult-ex.interface';
 export class PersonComponent implements OnInit {
   title!: string;
 
-  person: IPersonEx = { Id: 0, Updated: "No Update", Firstname: "No Firstname", Lastname: "No Lastname", Gender: 1 };
+  person: IPersonEx = { Id: 0, Updated: new Date().getFullYear(), Firstname: "No Firstname", Lastname: "No Lastname", Gender: 1 };
   getPersonMessage!: IGetPersonMessage;
 
   results!: IResultEx[];

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsListComponent } from './persons-list/persons-list.component';
@@ -9,18 +10,21 @@ import { PersonComponent } from './person/person.component';
 import { ResultsModule } from '../results/results.module';
 import { PersonRevisionsListComponent } from './person-revisions-list/person-revisions-list.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { PersonAddComponent } from './person-add/person-add.component';
 
 @NgModule({
   declarations: [
     PersonsComponent,
-    PersonsListComponent, PersonComponent, PersonRevisionsListComponent
+    PersonsListComponent, PersonComponent, PersonRevisionsListComponent, PersonAddComponent
   ],
   imports: [
     CommonModule,
     PersonsRoutingModule,
     SharedModule,
     ResultsModule,
-    PipesModule
+    PipesModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PersonsComponent,

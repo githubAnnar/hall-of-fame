@@ -32,7 +32,7 @@ export class PersonsListComponent implements OnInit {
       this.filteredPersons = this.listPersons.filter((person: IPersonEx) => {
         return person.Firstname.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
           person.Lastname.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
-          person.Updated.toLowerCase().indexOf(data.toLowerCase()) > -1;
+          person.Updated.toString().indexOf(data) > -1;
       });
     } else {
       this.filteredPersons = this.listPersons;
