@@ -44,7 +44,7 @@ export class PersonAddComponent implements OnInit {
       error: (err: string) => console.error('Observer got an error: ' + err),
       complete: () => {
         console.log('Observer got a complete notification');
-        this.router.navigate(["/Persons"]);
+        this.router.navigate(["/persons"]);
       }
     };
 

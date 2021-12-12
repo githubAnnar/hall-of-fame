@@ -11,11 +11,12 @@ import { ResultsModule } from '../results/results.module';
 import { PersonRevisionsListComponent } from './person-revisions-list/person-revisions-list.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { PersonAddComponent } from './person-add/person-add.component';
+import { PersonRevisionAddComponent } from './person-revision-add/person-revision-add.component';
 
 @NgModule({
   declarations: [
     PersonsComponent,
-    PersonsListComponent, PersonComponent, PersonRevisionsListComponent, PersonAddComponent
+    PersonsListComponent, PersonComponent, PersonRevisionsListComponent, PersonAddComponent, PersonRevisionAddComponent
   ],
   imports: [
     CommonModule,

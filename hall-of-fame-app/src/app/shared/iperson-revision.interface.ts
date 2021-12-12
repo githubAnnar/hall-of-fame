@@ -3,6 +3,6 @@ export interface IPersonRevision {
     PersonId: number;
     Firstname: string;
     Lastname: string;
-    Updated: string;
+    Updated: number;
     Gender: number;
 }

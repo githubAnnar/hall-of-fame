@@ -9,6 +9,10 @@
                     <p>Lastname: {{person.Lastname}}</p>
                     <p>Updated: {{person.Updated}}</p>
                     <p>Gender: {{person.Gender | gender}}</p>
+                </div><div class="card-footer">
+                    <button class="btn btn-primary" [routerLink]="['/personrevisionadd', person.Id]">
+                        Add New Revision
+                    </button>
                 </div>
             </div>
             <div class="card col-md-6 col-12">

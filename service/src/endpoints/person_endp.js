@@ -43,12 +43,12 @@ class PersonEndpoints {
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_PERSON}/`, (req, res, next) => {
-            this.repository.insertNewPerson(res, req.body.firstname, req.body.lastname, req.body.update, req.body.gender);
+            this.repository.insertNewPerson(res, req.body.Firstname, req.body.Lastname, req.body.Updated, req.body.Gender);
             console.log(`${Helpers.getDateNowString()} request: POST ${ADD_PERSON}. req: ${JSON.stringify(req.body)}`);
         });
 
         this.app.post(`/${this.rootPath}/${MODULE}/${ADD_PERSONR}/`, (req, res, next) => {
-            this.repository.insertPersonRevisionById(res, req.body.id, req.body.firstname, req.body.lastname, req.body.update, req.body.gender);
+            this.repository.insertPersonRevisionById(res, req.body.PersonId, req.body.Firstname, req.body.Lastname, req.body.Updated, req.body.Gender);
             console.log(`${Helpers.getDateNowString()} request: POST ${ADD_PERSONR}. req: ${JSON.stringify(req.body)}`);
         });
     };

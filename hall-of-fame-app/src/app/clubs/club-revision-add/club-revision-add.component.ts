@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { ClubDataService } from 'src/app/core/club-data-service.service';
 import { IClubRevision } from 'src/app/shared/iclub-revision.interface';
 import { IPostClubRevisionMessage } from 'src/app/shared/ipost-club-revision-message.interface';

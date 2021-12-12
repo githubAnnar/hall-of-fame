@@ -8,7 +8,7 @@ class PersonRepository {
 
     // Get all persons
     getAllPersons(res) {
-        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId';
+        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Id = (SELECT MAX(Id) FROM PersonRevision pr2 WHERE pr2.PersonId = pr1.PersonId)) pr ON Person.Id = pr.PersonId';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -26,7 +26,7 @@ class PersonRepository {
 
     // Get person by Id
     getPersonById(res, id) {
-        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Updated = (SELECT MAX(Updated) FROM PersonRevision pr2 WHERE pr2.Id = pr1.Id)) pr ON Person.Id = pr.PersonId WHERE Person.Id = ?'
+        var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Id = (SELECT MAX(Id) FROM PersonRevision pr2 WHERE pr2.PersonId = pr1.PersonId)) pr ON Person.Id = pr.PersonId WHERE Person.Id = ?'
         var params = [id];
         this.db.get(sql, params, (err, row) => {
             if (err) {

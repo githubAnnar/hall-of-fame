@@ -15,8 +15,9 @@
                 <input class="form-control" id="year" type="number" formControlName="yearinput" />
             </div>
             <div class="form-group">
-                <label for="gender">Gender</label>
-                <input class="form-control" id="gender" type="radio" formControlName="genderinput" />
+                <input id="gender1" [value]="1" type="radio" formControlName="genderinput" /> Male
+                <input id="gender2" [value]="2" type="radio" formControlName="genderinput" />
+                Female
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!formPersonAdd.valid">Submit</button>
             <div *ngIf="!formPersonAdd.valid">
