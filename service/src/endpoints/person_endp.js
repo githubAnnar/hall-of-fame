@@ -16,6 +16,7 @@ class PersonEndpoints {
         console.log(`${Helpers.getDateNowString()} Starting enpoints for club`);
         const MODULE = "person";
         const ALL_PERSONS = "getallpersons";
+        const ALL_PERSON_REVISIONS = "getallpersonrevisions";
         const ONE_PERSON = "getpersonbyid";
         const PERSON_REVISIONS = "getpersonrevisionsbyid";
         const PERSON_REVISIONSBYRACE = "getpersonrevisionsbyraceid";
@@ -25,6 +26,11 @@ class PersonEndpoints {
         this.app.get(`/${this.rootPath}/${MODULE}/${ALL_PERSONS}`, (req, res, next) => {
             this.repository.getAllPersons(res);
             console.log(`${Helpers.getDateNowString()} request: GET ${ALL_PERSONS}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${ALL_PERSON_REVISIONS}`, (req, res, next) => {
+            this.repository.getAllPersonRevisions(res);
+            console.log(`${Helpers.getDateNowString()} request: GET ${ALL_PERSON_REVISIONS}. req:${JSON.stringify(req.params)}`);
         });
 
         this.app.get(`/${this.rootPath}/${MODULE}/${ONE_PERSON}/:id`, (req, res, next) => {

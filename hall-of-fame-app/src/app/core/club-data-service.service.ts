@@ -30,6 +30,11 @@ export class ClubDataService {
       .pipe(catchError(this.helpers.handleError));
   }
 
+  getAllClubRevisions(): Observable<IGetClubRevisionsMessage> {
+    return this.http.get<IGetClubRevisionsMessage>(`${this.baseUrl}getallclubrevisions`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
   getClubById(id: number): Observable<IGetClubMessage> {
     return this.http.get<IGetClubMessage>(`${this.baseUrl}getclubbyid/${id}`)
       .pipe(catchError(this.helpers.handleError));

@@ -16,6 +16,7 @@ class ClubEndpoints {
         console.log(`${Helpers.getDateNowString()} Starting enpoints for club`);
         const MODULE = "club";
         const ALL_CLUBS = "getallclubs";
+        const ALL_CLUB_REVISIONS = "getallclubrevisionss";
         const ONE_CLUB = "getclubbyid";
         const CLUB_REVISIONS = "getclubrevisionsbyid";
         const ADD_CLUB = "addclub";
@@ -24,6 +25,11 @@ class ClubEndpoints {
         this.app.get(`/${this.rootPath}/${MODULE}/${ALL_CLUBS}`, (req, res, next) => {
             this.repository.getAllClubs(res);
             console.log(`${Helpers.getDateNowString()} request: GET ${ALL_CLUBS}. req:${JSON.stringify(req.params)}`);
+        });
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${ALL_CLUB_REVISIONS}`, (req, res, next) => {
+            this.repository.getAllClubRevisions(res);
+            console.log(`${Helpers.getDateNowString()} request: GET ${ALL_CLUB_REVISIONS}. req:${JSON.stringify(req.params)}`);
         });
 
         this.app.get(`/${this.rootPath}/${MODULE}/${ONE_CLUB}/:id`, (req, res, next) => {

@@ -24,6 +24,24 @@ class ClubRepository {
         });
     }
 
+    // Get all club revisions
+    getAllClubRevisions(res) {
+        var sql = 'SELECT Cr.Id, Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Id = (SELECT MAX(Id) FROM ClubRevision cr2 WHERE cr2.ClubId = cr1.ClubId)) cr ON club.Id = cr.ClubId';
+        var params = [];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getAllClubRevisions returns ${rows.length} rows`);
+        });
+    }
+
     // Get Club by Id
     getClubById(res, id) {
         var sql = 'SELECT Club.Id, Cr.Name, Cr.Updated FROM Club JOIN (SELECT * FROM ClubRevision cr1 WHERE cr1.Id = (SELECT MAX(Id) FROM ClubRevision cr2 WHERE cr2.ClubId = cr1.ClubId)) cr ON club.Id = cr.ClubId WHERE Club.Id = ?'

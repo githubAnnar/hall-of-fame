@@ -30,6 +30,11 @@ export class PersonDataService {
       .pipe(catchError(this.helpers.handleError));
   }
 
+  getAllPersonRevisions(): Observable<IGetPersonRevisionsMessage> {
+    return this.http.get<IGetPersonRevisionsMessage>(`${this.baseUrl}getallpersonrevisions`)
+      .pipe(catchError(this.helpers.handleError));
+  }
+
   getPersonById(id: number): Observable<IGetPersonMessage> {
     return this.http.get<IGetPersonMessage>(`${this.baseUrl}getpersonbyid/${id}`)
       .pipe(catchError(this.helpers.handleError));

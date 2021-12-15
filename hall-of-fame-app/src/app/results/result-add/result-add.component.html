@@ -1,0 +1,37 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <div class="card">
+            <h3 class="card-header">Add Result</h3>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()" #addResultForm="ngForm">
+                    <div class="form-group">
+                        <label for="race">Race</label>
+                        <select class="form-control" id="race" required [(ngModel)]="model.RaceId" name="race"
+                            #race="ngModel">
+                            <option *ngFor="let race of allRaces" [value]="race.Id">{{race.Year}} ({{race.Length}})
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="person">Person</label>
+                        <select class="form-control" id="person" required [(ngModel)]="model.PersonRevisionId" name="person"
+                            #person="ngModel">
+                            <option *ngFor="let person of allPersonRevisions" [value]="person.Id">{{person.Firstname}} {{person.Lastname}} ({{person.Updated}})
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="club">Club</label>
+                        <select class="form-control" id="club" required [(ngModel)]="model.ClubRevisionId" name="club"
+                            #club="ngModel">
+                            <option *ngFor="let club of allClubRevisions" [value]="club.Id">{{club.Name}} ({{club.Updated}})
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

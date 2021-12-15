@@ -24,6 +24,24 @@ class PersonRepository {
         });
     }
 
+    // Get all person revisions
+    getAllPersonRevisions(res) {
+        var sql = 'SELECT pr.Id, Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Id = (SELECT MAX(Id) FROM PersonRevision pr2 WHERE pr2.PersonId = pr1.PersonId)) pr ON Person.Id = pr.PersonId';
+        var params = [];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                res.status(400).json({ "error": err.message });
+                return;
+            }
+            res.json({
+                "message": "success",
+                "data": rows
+            });
+            console.log(`${Helpers.getDateNowString()} getAllPersonRevisions returns ${rows.length} rows`);
+        });
+    }
+
     // Get person by Id
     getPersonById(res, id) {
         var sql = 'SELECT Person.Id, pr.Firstname, pr.Lastname, pr.Updated, pr.Gender FROM Person JOIN (SELECT * FROM PersonRevision pr1 WHERE pr1.Id = (SELECT MAX(Id) FROM PersonRevision pr2 WHERE pr2.PersonId = pr1.PersonId)) pr ON Person.Id = pr.PersonId WHERE Person.Id = ?'
