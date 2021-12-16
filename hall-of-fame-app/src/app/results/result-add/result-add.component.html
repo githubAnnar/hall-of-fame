@@ -6,31 +6,52 @@
                 <form (ngSubmit)="onSubmit()" #addResultForm="ngForm">
                     <div class="form-group">
                         <label for="race">Race</label>
-                        <select class="form-control" id="race" required [(ngModel)]="model.RaceId" name="race"
+                        <select class="form-control" id="race" required [(ngModel)]="selectedRace" name="race"
                             #race="ngModel">
-                            <option *ngFor="let race of allRaces" [value]="race.Id">{{race.Year}} ({{race.Length}})
+                            <option *ngFor="let race of allRaces" [value]="race">{{race.Year}}
+                                ({{race.Length}})
                             </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="person">Person</label>
-                        <select class="form-control" id="person" required [(ngModel)]="model.PersonRevisionId" name="person"
-                            #person="ngModel">
-                            <option *ngFor="let person of allPersonRevisions" [value]="person.Id">{{person.Firstname}} {{person.Lastname}} ({{person.Updated}})
+                        <select class="form-control" id="person" required [(ngModel)]="selectedPersonRevision"
+                            name="person" #person="ngModel">
+                            <option *ngFor="let person of allPersonRevisions" [value]="person.Id">
+                                {{person.Firstname}} {{person.Lastname}} ({{person.Updated}})
                             </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="club">Club</label>
-                        <select class="form-control" id="club" required [(ngModel)]="model.ClubRevisionId" name="club"
+                        <select class="form-control" id="club" required [(ngModel)]="selectedClubRevision" name="club"
                             #club="ngModel">
-                            <option *ngFor="let club of allClubRevisions" [value]="club.Id">{{club.Name}} ({{club.Updated}})
+                            <option *ngFor="let club of allClubRevisions" [value]="club.Id">{{club.Name}}
+                                ({{club.Updated}})
                             </option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input class="form-control" id="time" required type="time" step="1" />
+                    </div>
+
+                    <button type="submit" class="btn btn-success" [disabled]="!addResultForm.form.valid">Submit</button>
                 </form>
+            </div>
+            <div [hidden]="!submitted">
+                <h3 >Submitted</h3>
+                <div class="row">
+                    <div class="col-xs-3">
+                        Race
+                    </div>
+                    <div class="col-xs-9">
+                        {{selectedRace}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

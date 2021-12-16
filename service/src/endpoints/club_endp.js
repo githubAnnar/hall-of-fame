@@ -16,7 +16,7 @@ class ClubEndpoints {
         console.log(`${Helpers.getDateNowString()} Starting enpoints for club`);
         const MODULE = "club";
         const ALL_CLUBS = "getallclubs";
-        const ALL_CLUB_REVISIONS = "getallclubrevisionss";
+        const ALL_CLUB_REVISIONS = "getallclubrevisions";
         const ONE_CLUB = "getclubbyid";
         const CLUB_REVISIONS = "getclubrevisionsbyid";
         const ADD_CLUB = "addclub";

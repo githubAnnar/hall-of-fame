@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PartialObserver } from 'rxjs';
 import { ClubDataService } from 'src/app/core/club-data-service.service';
 import { PersonDataService } from 'src/app/core/person-data-service.service';
 import { RaceDataService } from 'src/app/core/race-data-service.service';
@@ -24,7 +25,9 @@ export class ResultAddComponent implements OnInit {
   allPersonRevisions!: IPersonRevision[];
   allClubRevisions!: IClubRevision[];
 
-  public model!:IResult;
+  selectedRace!: IRace;
+  selectedPersonRevision!:IPersonRevision;
+  selectedClubRevision!: IClubRevision;
 
   submitted = false;
 
@@ -60,7 +63,7 @@ export class ResultAddComponent implements OnInit {
     this.personDataService.getAllPersonRevisions().subscribe(getPersonRevisionsObserver);
 
     // Get All Club revisions
-    const getClubRevisionsObserver = {
+    const getClubRevisionsObserver:PartialObserver<IGetClubRevisionsMessage> = {
       next: (m: IGetClubRevisionsMessage) => {
         console.log(`Observer got ${m.message} for GET ClubRevisions`);
         this.clubRevisionsGetMessage = m;
@@ -75,6 +78,6 @@ export class ResultAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.submitted = !this.submitted;
   }
 }
