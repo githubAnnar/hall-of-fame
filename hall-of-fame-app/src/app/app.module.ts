@@ -13,6 +13,12 @@ import { CoreModule } from './core/core.module';
 import { PersonsModule } from './persons/persons.module'
 import { ResultsModule } from './results/results.module';
 import { PipesModule } from './pipes/pipes.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -25,14 +31,18 @@ import { PipesModule } from './pipes/pipes.module';
     ResultsModule,
     AppRoutingModule,
     CoreModule,
-    PipesModule
+    PipesModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
