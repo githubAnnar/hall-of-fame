@@ -129,6 +129,44 @@ class UserRepository {
     }
 
     // Insert new user
+    create(username, email, password) {
+        var errors = [];
+
+        if (!created) {
+            errors.push("No Created is specified!");
+        }
+
+        if (errors.length) {
+            return console.error(`${Helpers.getDateNowString()} ERROR: ${errors.join(", ")}`);
+        }
+
+        var data = {
+            Username: username,
+            Email: email,
+            Password: password,
+            CreatedAt: new Date().getUTCDate()
+        };
+
+        var params = [data.Username, data.Email, data.Password, data.CreatedAt, data.CreatedAt];
+
+        var sql = 'INSERT INTO User (Username, Email, Password, CreatedAt, UpdatedAt) VALUES (?, ?, ?, ?, ?)';
+        this.db.serialize(() => {
+            this.db.run(sql, params, (err) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} INSERT ERROR: ${err.message}`);
+                }
+            });
+            this.db.get("SELECT Id FROM User WHERE Id = (SELECT seq FROM sqlite_sequence WHERE name = 'User')", [], (err, row) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} GET ERROR: ${err.message}`);
+                }
+
+                console.log(`${Helpers.getDateNowString()} create inserted row: ${JSON.stringify(row)}`);
+                return row;
+            });
+        });
+    }
+
     insertNewUser(res, username, email, password) {
         var errors = [];
 
