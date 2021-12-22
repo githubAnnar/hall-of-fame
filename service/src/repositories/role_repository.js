@@ -7,6 +7,19 @@ class RoleRepository {
     }
 
     // Get all roles
+    findAll() {
+        var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role';
+        var params = [];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
+            return rows;
+        });
+    }
+
     getAllRoles(res) {
         var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role';
         var params = [];
@@ -25,6 +38,19 @@ class RoleRepository {
     }
 
     // Get race by Id
+    findById(id) {
+        var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Id = ?'
+        var params = [id];
+        this.db.get(sql, params, (err, row) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
+            return row;
+        });
+    }
+
     getRoleById(res, id) {
         var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Id = ?'
         var params = [id];

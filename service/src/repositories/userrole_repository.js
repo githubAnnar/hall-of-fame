@@ -7,8 +7,21 @@ class UserRoleRepository {
     }
 
     // Get all UserRoles
+    findAll() {
+        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole';
+        var params = [];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
+            return rows;
+        });
+    }
+
     getAllUserRoles(res) {
-        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserROle';
+        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole';
         var params = [];
         this.db.all(sql, params, (err, rows) => {
             if (err) {
@@ -24,7 +37,20 @@ class UserRoleRepository {
         });
     }
 
-    // Get UserRole by RoleId
+    // Get UserRole by RoleId    
+    findByRoleId(roleId) {
+        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE RoleId = ?';
+        var params = [roleId];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findByRoleId returns ${rows.length} rows`);
+            return rows;
+        });
+    }
+
     getUserRoleByRoleId(res, roleId) {
         var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE RoleId = ?';
         var params = [roleId];
@@ -43,6 +69,19 @@ class UserRoleRepository {
     }
 
     // Get UserRole by UserId
+    findByUserId(userId) {
+        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE UserId = ?';
+        var params = [userId];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findByUserId returns ${rows.length} rows`);
+            return rows;
+        });
+    }
+
     getUserRoleByUserId(res, userId) {
         var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE UserId = ?';
         var params = [userId];
@@ -61,6 +100,19 @@ class UserRoleRepository {
     }
 
     // Get UserRole by RoleId & UserId
+    findByRoleIdAndUserId(roleId, userId) {
+        var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE RoleId = ? AND UserId = ?';
+        var params = [roleId, userId];
+        this.db.get(sql, params, (err, row) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findByRoleIdAndUserId returns Id ${row.RoleId}-${row.UserId}`);
+            return row;
+        });
+    }
+
     getUserRoleByRoleIdAndUserId(res, roleId, userId) {
         var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE RoleId = ? AND UserId = ?';
         var params = [roleId, userId];

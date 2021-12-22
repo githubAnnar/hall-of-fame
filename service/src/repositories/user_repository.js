@@ -7,6 +7,19 @@ class UserRepository {
         console.log(`${Helpers.getDateNowString()} HELLO from UserRepository constructor`);
     }
 
+    findAll() {
+        var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User';
+        var params = [];
+        this.db.all(sql, params, (err, rows) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
+            return rows;
+        });
+    }
+
     getAllUsers(res) {
         var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User';
         var params = [];
@@ -21,6 +34,20 @@ class UserRepository {
                 "data": rows
             });
             console.log(`${Helpers.getDateNowString()} getAllUsers returns ${rows.length} rows`);
+        });
+    }
+
+    findById(id) {
+        var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Id = ?'
+        var params = [id];
+        this.db.get(sql, params, (err, row) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+
+            console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
+            return row;
         });
     }
 
@@ -41,6 +68,19 @@ class UserRepository {
         });
     }
 
+    findByUsername(username) {
+        var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Username = ?'
+        var params = [username];
+        this.db.get(sql, params, (err, row) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findByUsername returns Id ${row.Id}`);
+            return row;
+        });
+    }
+
     getUserByUsername(res, username) {
         var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Username = ?'
         var params = [username];
@@ -55,6 +95,19 @@ class UserRepository {
                 "data": row
             });
             console.log(`${Helpers.getDateNowString()} getUserByUsername returns Id ${row.Id}`);
+        });
+    }
+
+    findByEmail(email) {
+        var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Email = ?'
+        var params = [email];
+        this.db.get(sql, params, (err, row) => {
+            if (err) {
+                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+            }
+
+            console.log(`${Helpers.getDateNowString()} findByEmail returns Id ${row.Id}`);
+            return row;
         });
     }
 
