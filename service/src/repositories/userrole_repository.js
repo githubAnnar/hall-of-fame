@@ -69,10 +69,10 @@ class UserRoleRepository {
     }
 
     // Get UserRole by UserId
-    findByUserId(userId) {
+    async findByUserId(userId) {
         var sql = 'SELECT RoleId, UserId, CreatedAt, UpdatedAt FROM UserRole WHERE UserId = ?';
         var params = [userId];
-        this.db.all(sql, params, (err, rows) => {
+        await this.db.all(sql, params, (err, rows) => {
             if (err) {
                 return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
             }

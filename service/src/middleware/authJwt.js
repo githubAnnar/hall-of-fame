@@ -35,8 +35,8 @@ class AuthJwtMW {
         });
     };
 
-    isAdmin = (req, res, next) => {
-        this.userRepository.findById(req.userId).then(user => {
+    async isAdmin(req, res, next) {
+        await this.userRepository.findById(req.userId).then(user => {
             this.userRoleRepository.findByUserId(user.id).then(roles => {
                 for (let i = 0; i < roles.length; i++) {
                     if (roles[i].name === "admin") {
@@ -53,8 +53,8 @@ class AuthJwtMW {
         });
     };
 
-    isModerator = (req, res, next) => {
-        this.userRepository.findById(req.userId).then(user => {
+    async isModerator(req, res, next) {
+        await this.userRepository.findById(req.userId).then(user => {
             this.userRoleRepository.findByUserId(user.id).then(roles => {
                 for (let i = 0; i < roles.length; i++) {
                     if (roles[i].name === "moderator") {
@@ -70,8 +70,8 @@ class AuthJwtMW {
         });
     };
 
-    isModeratorOrAdmin = (req, res, next) => {
-        this.userRepository.findById(req.userId).then(user => {
+    async isModeratorOrAdmin(req, res, next) {
+        await this.userRepository.findById(req.userId).then(user => {
             this.userRoleRepository.findByUserId(user.id).then(roles => {
                 for (let i = 0; i < roles.length; i++) {
                     if (roles[i].name === "moderator") {

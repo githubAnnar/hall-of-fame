@@ -23,8 +23,8 @@ class ClubEndpoints {
         const ADD_CLUBR = "addclubrevision";
 
         this.app.get(`/${this.rootPath}/${MODULE}/${ALL_CLUBS}`, (req, res, next) => {
-            this.repository.getAllClubs(res);
             console.log(`${Helpers.getDateNowString()} request: GET ${ALL_CLUBS}. req:${JSON.stringify(req.params)}`);
+            this.repository.getAllClubs(res);
         });
 
         this.app.get(`/${this.rootPath}/${MODULE}/${ALL_CLUB_REVISIONS}`, (req, res, next) => {

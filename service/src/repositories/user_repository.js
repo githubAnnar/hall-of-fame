@@ -37,14 +37,13 @@ class UserRepository {
         });
     }
 
-    findById(id) {
+    async findById(id) {
         var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Id = ?'
         var params = [id];
-        this.db.get(sql, params, (err, row) => {
+        await this.db.get(sql, params, (err, row) => {
             if (err) {
                 return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
             }
-
 
             console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
             return row;
@@ -68,15 +67,15 @@ class UserRepository {
         });
     }
 
-    findByUsername(username) {
+    async findByUsername(username) {
         var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Username = ?'
         var params = [username];
-        this.db.get(sql, params, (err, row) => {
+        await this.db.get(sql, params, (err, row) => {
             if (err) {
                 return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
             }
 
-            console.log(`${Helpers.getDateNowString()} findByUsername returns Id ${row.Id}`);
+            console.log(`${Helpers.getDateNowString()} findByUsername returns ${JSON.stringify(row)}`);
             return row;
         });
     }
@@ -98,15 +97,15 @@ class UserRepository {
         });
     }
 
-    findByEmail(email) {
+    async findByEmail(email) {
         var sql = 'SELECT Id, Username, Email, Password, CreatedAt, UpdatedAt FROM User WHERE Email = ?'
         var params = [email];
-        this.db.get(sql, params, (err, row) => {
+        await this.db.get(sql, params, (err, row) => {
             if (err) {
                 return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
             }
 
-            console.log(`${Helpers.getDateNowString()} findByEmail returns Id ${row.Id}`);
+            console.log(`${Helpers.getDateNowString()} findByEmail returns ${row}`);
             return row;
         });
     }

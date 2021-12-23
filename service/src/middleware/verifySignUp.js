@@ -12,7 +12,7 @@ class VerifySignUpMW {
         console.log(`${Helpers.getDateNowString()} HELLO from VerifySignUpMW constructor`);
     }
 
-    checkDuplicateUsernameOrEmail = (req, res, next) => {
+    checkDuplicateUsernameOrEmail(req, res, next) {
         // Username
         this.userRepository.findByUsername(req.body.username)
             .then(user => {
@@ -24,9 +24,9 @@ class VerifySignUpMW {
                 }
 
                 // Email
-                this.userRepository.getUserByEmail(res, req.body.email)
-                    .then(user => {
-                        if (user) {
+                this.userRepository.findByEmail(req.body.email)
+                    .then(email => {
+                        if (email) {
                             res.status(400).send({
                                 message: "Failed! Email is already in use!"
                             });
@@ -38,7 +38,7 @@ class VerifySignUpMW {
             });
     };
 
-    checkRolesExisted = (req, res, next) => {
+    checkRolesExisted(req, res, next) {
         if (req.body.roles) {
             const allRoleNames = this.roleRepository.findAll().map(r => r.name);
             for (let i = 0; i < req.body.roles.length; i++) {
