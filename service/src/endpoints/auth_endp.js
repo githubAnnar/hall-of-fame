@@ -18,14 +18,22 @@ class AuthEndpoints {
         const SIGNUP = "signup";
         const SIGNIN = "signin";
 
-        this.app.post(`/${this.rootPath}/${MODULE}/${SIGNUP}/`, (req, res, next) => {
-            console.log(`${Helpers.getDateNowString()} request: POST ${SIGNUP}. req: ${JSON.stringify(req.body)}`);
-            this.verifySignup.checkDuplicateUsernameOrEmail(req, res, next);
-            console.log(`${Helpers.getDateNowString()} response: POST ${SIGNUP} finished`);
-            this.controller.signup(req,res);
-        });
+        // this.app.post(`/${this.rootPath}/${MODULE}/${SIGNUP}/`, (req, res, next) => {
+        //     console.log(`${Helpers.getDateNowString()} request: POST ${SIGNUP}. req: ${JSON.stringify(req.body)}`);
+        //     this.verifySignup.checkDuplicateUsernameOrEmail(req, res, next).then(ok => {
 
-        this.app.post(`/${this.rootPath}/${MODULE}/${SIGNIN}/`, (req, res, next) => {
+        //         this.controller.signup(req, res);
+        //         console.log(`${Helpers.getDateNowString()} response: POST ${SIGNUP} finished`);
+
+        //     });
+        // });
+
+        this.app.post(`/${this.rootPath}/${MODULE}/${SIGNUP}/`, [
+            this.verifySignup.checkDuplicateUsernameOrEmail,
+            this.verifySignup.checkRolesExisted
+        ], this.controller.signup);
+
+        this.app.post(`/${this.rootPath}/${MODULE}/${SIGNIN}/`, (req, res) => {
             this.controller.signin(req, res);
             console.log(`${Helpers.getDateNowString()} request: POST ${SIGNIN}. req: ${JSON.stringify(req.body)}`);
         });

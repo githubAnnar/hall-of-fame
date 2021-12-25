@@ -17,25 +17,25 @@ class AuthController {
         console.log(`${Helpers.getDateNowString()} HELLO from AuthController constructor`);
     }
 
-    signup(req, res) {
+    async signup(req, res) {
         // Save User to Database
-        this.userRepository.create(req.body.username, req.body.email, bcrypt.hashSync(req.body.password, 8))
+        await this.userRepository.create(req.body.username, req.body.email, bcrypt.hashSync(req.body.password, 8))
             .then(user => {
+                if (!user){
+                    throw new Error("User was not created!");
+                }
+                console.log('User created:', user)
                 if (req.body.roles) {
-                    Role.findAll({
-                        where: {
-                            name: {
-                                [Op.or]: req.body.roles
-                            }
-                        }
-                    }).then(roles => {
-                        user.setRoles(roles).then(() => {
+                    this.roleRepository.findByNames(req.body.roles)
+                        .then(roles => {
+                            roles.forEach(element => {
+                                this.userRoleRepository.insertNewUserRole(res, element.Id, user.Id)
+                            });
                             res.send({ message: "User was registered successfully!" });
                         });
-                    });
                 } else {
                     // user role = 1
-                    user.setRoles([1]).then(() => {
+                    this.userRoleRepository.insertNewUserRole(res, 1, user.Id).then(() => {
                         res.send({ message: "User was registered successfully!" });
                     });
                 }

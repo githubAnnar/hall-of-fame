@@ -7,17 +7,20 @@ class RoleRepository {
     }
 
     // Get all roles
-    findAll() {
-        var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role';
-        var params = [];
-        this.db.all(sql, params, (err, rows) => {
-            if (err) {
-                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
-            }
+    async findAll() {
+        return new Promise(resolve => {
+            var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role';
+            var params = [];
+            this.db.all(sql, params, (err, rows) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                }
 
-            console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
-            return rows;
-        });
+                console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
+                console.log(`${Helpers.getDateNowString()} findAll returns ${JSON.stringify(rows)}`);
+                resolve(rows);
+            });
+        })
     }
 
     getAllRoles(res) {
@@ -37,17 +40,19 @@ class RoleRepository {
         });
     }
 
-    // Get race by Id
-    findById(id) {
-        var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Id = ?'
-        var params = [id];
-        this.db.get(sql, params, (err, row) => {
-            if (err) {
-                return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
-            }
+    // Get role by Id
+    async findById(id) {
+        return new Promise(resolve => {
+            var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Id = ?'
+            var params = [id];
+            this.db.get(sql, params, (err, row) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                }
 
-            console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
-            return row;
+                console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
+                resolve(row);
+            });
         });
     }
 
@@ -65,6 +70,41 @@ class RoleRepository {
                 "data": row
             });
             console.log(`${Helpers.getDateNowString()} getRoleById returns Id ${row.Id}`);
+        });
+    }
+
+    // Get role by name
+    async findByName(name) {
+        return new Promise(resolve => {
+            var sql = 'SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Name = ?'
+            var params = [id];
+            this.db.get(sql, params, (err, row) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                }
+
+                console.log(`${Helpers.getDateNowString()} findByName returns Id ${row.Id}`);
+                resolve(row);
+            });
+        });
+    }
+
+    async findByNames(names) {
+        console.log(`${Helpers.getDateNowString()} names=`, names);
+        let data = [];
+        return new Promise(resolve => {
+            var sql = `SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Name IN (${names.map(n => { return '?' }).join(',')})`;
+            console.log('SQL: ', sql);
+            this.db.all(sql, names, (err, rows) => {
+                if (err) {
+                    return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
+                }
+                rows.forEach((row) => {
+                    data.push(row);
+                });
+                console.log(`${Helpers.getDateNowString()} findByNames returns ${JSON.stringify(data)}`);
+                resolve(data);
+            });
         });
     }
 }

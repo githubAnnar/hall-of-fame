@@ -7,13 +7,14 @@ var UserRepository = require("../repositories/user_repository");
 class VerifySignUpMW {
     constructor(db) {
         this.db = db;
-        this.roleRepository = new RoleRepository(this.db);
-        this.userRepository = new UserRepository(this.db);
+        this.roleRepository = new RoleRepository(db);
+        this.userRepository = new UserRepository(db);
         console.log(`${Helpers.getDateNowString()} HELLO from VerifySignUpMW constructor`);
     }
 
     checkDuplicateUsernameOrEmail(req, res, next) {
         // Username
+        console.log("userRep: ", this.db);
         this.userRepository.findByUsername(req.body.username)
             .then(user => {
                 if (user) {
@@ -22,20 +23,19 @@ class VerifySignUpMW {
                     });
                     return;
                 }
-
-                // Email
-                this.userRepository.findByEmail(req.body.email)
-                    .then(email => {
-                        if (email) {
-                            res.status(400).send({
-                                message: "Failed! Email is already in use!"
-                            });
-                            return;
-                        }
-
-                        next();
-                    });
             });
+
+        // Email
+        this.userRepository.findByEmail(req.body.email)
+            .then(email => {
+                if (email) {
+                    res.status(400).send({
+                        message: "Failed! Email is already in use!"
+                    });
+                    return;
+                }
+            });
+        next();
     };
 
     checkRolesExisted(req, res, next) {

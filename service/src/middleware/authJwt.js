@@ -39,7 +39,7 @@ class AuthJwtMW {
         await this.userRepository.findById(req.userId).then(user => {
             this.userRoleRepository.findByUserId(user.id).then(roles => {
                 for (let i = 0; i < roles.length; i++) {
-                    if (roles[i].name === "admin") {
+                    if (roles[i].name === "Admin") {
                         next();
                         return;
                     }
@@ -74,12 +74,12 @@ class AuthJwtMW {
         await this.userRepository.findById(req.userId).then(user => {
             this.userRoleRepository.findByUserId(user.id).then(roles => {
                 for (let i = 0; i < roles.length; i++) {
-                    if (roles[i].name === "moderator") {
+                    if (roles[i].name === "Moderator") {
                         next();
                         return;
                     }
 
-                    if (roles[i].name === "admin") {
+                    if (roles[i].name === "Admin") {
                         next();
                         return;
                     }
