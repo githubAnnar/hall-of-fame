@@ -45,8 +45,8 @@ class AuthController {
             });
     }
 
-    signin(req, res) {
-        this.userRepository.findByUsername(req.body.username)
+    async signin(req, res) {
+        await this.userRepository.findByUsername(req.body.username)
             .then(user => {
                 if (!user) {
                     return res.status(404).send({ message: "User Not found." });
@@ -54,7 +54,7 @@ class AuthController {
 
                 var passwordIsValid = bcrypt.compareSync(
                     req.body.password,
-                    user.password
+                    user.Password
                 );
 
                 if (!passwordIsValid) {
@@ -64,22 +64,25 @@ class AuthController {
                     });
                 }
 
-                var token = jwt.sign({ id: user.id }, config.secret, {
+                var token = jwt.sign({ id: user.Id }, config.secret, {
                     expiresIn: 86400 // 24 hours
                 });
 
-                var authorities = [];
-                this.userRoleRepository.findByUserId(user.id).then(roles => {
-                    for (let i = 0; i < roles.length; i++) {
-                        authorities.push("ROLE_" + roles[i].name.toUpperCase());
-                    }
-                    res.status(200).send({
-                        id: user.id,
-                        username: user.username,
-                        email: user.email,
-                        roles: authorities,
-                        accessToken: token
+                this.userRoleRepository.findByUserId(user.Id).then(roles => {
+                    const rolePromises = roles.map(async userRole => {
+                        const role = await this.roleRepository.findById(userRole.RoleId);
+                        return `ROLE_${role.Name.toUpperCase()}`
                     });
+                    Promise.all(rolePromises).then(authorities => {
+                        res.status(200).send({
+                            id: user.Id,
+                            username: user.Username,
+                            email: user.Email,
+                            roles: authorities,
+                            accessToken: token
+                        });
+                    });
+
                 });
             })
             .catch(err => {
