@@ -14,43 +14,45 @@ class VerifySignUpMW {
 
     checkDuplicateUsernameOrEmail(req, res, next) {
         // Username
-        console.log("userRep: ", this.db);
         this.userRepository.findByUsername(req.body.username)
             .then(user => {
                 if (user) {
+                    console.log(`${Helpers.getDateNowString()} Username: ${user.Username} is already exixting`);
                     res.status(400).send({
                         message: "Failed! Username is already in use!"
                     });
                     return;
                 }
-            });
 
-        // Email
-        this.userRepository.findByEmail(req.body.email)
-            .then(email => {
-                if (email) {
-                    res.status(400).send({
-                        message: "Failed! Email is already in use!"
+                // Email
+                this.userRepository.findByEmail(req.body.email)
+                    .then(user => {
+                        if (user) {
+                            console.log(`${Helpers.getDateNowString()} Email: ${user.Email} is already exixting`);
+                            res.status(400).send({
+                                message: "Failed! Email is already in use!"
+                            });
+                            return;
+                        }
                     });
-                    return;
-                }
+                next();
             });
-        next();
     };
 
-    checkRolesExisted(req, res, next) {
+    async checkRolesExisted(req, res, next) {
         if (req.body.roles) {
-            const allRoleNames = this.roleRepository.findAll().map(r => r.name);
-            for (let i = 0; i < req.body.roles.length; i++) {
-                if (!allRoleNames.includes(req.body.roles[i])) {
-                    res.status(400).send({
-                        message: `Failed! Role does not exist = ${req.body.roles[i]}`
-                    });
-                    return;
+            await this.roleRepository.findAll().then(roles => {
+                const allRoleNames = roles.map(r => r.Name);
+                for (let i = 0; i < req.body.roles.length; i++) {
+                    if (!allRoleNames.includes(req.body.roles[i])) {
+                        res.status(400).send({
+                            message: `Failed! Role does not exist = ${req.body.roles[i]}`
+                        });
+                        return;
+                    }
                 }
-            }
+            });
         }
-
         next();
     };
 }

@@ -16,7 +16,6 @@ class RoleRepository {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                 }
 
-                console.log(`${Helpers.getDateNowString()} findAll returns ${rows.length} rows`);
                 console.log(`${Helpers.getDateNowString()} findAll returns ${JSON.stringify(rows)}`);
                 resolve(rows);
             });
@@ -94,7 +93,6 @@ class RoleRepository {
         let data = [];
         return new Promise(resolve => {
             var sql = `SELECT Id, Name, CreatedAt, UpdatedAt FROM Role WHERE Name IN (${names.map(n => { return '?' }).join(',')})`;
-            console.log('SQL: ', sql);
             this.db.all(sql, names, (err, rows) => {
                 if (err) {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);

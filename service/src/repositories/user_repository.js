@@ -80,7 +80,7 @@ class UserRepository {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                 }
 
-                console.log(`${Helpers.getDateNowString()} findByUsername returns ${JSON.stringify(row)}`);
+                console.log(`${Helpers.getDateNowString()} findByUsername returns row with id: ${row.Id}`);
                 resolve(row);
             });
         });
@@ -169,7 +169,6 @@ class UserRepository {
                         return console.error(`${Helpers.getDateNowString()} GET ERROR: ${err.message}`);
                     }
 
-                    console.log(`${Helpers.getDateNowString()} create inserted row: ${JSON.stringify(row)}`);
                     resolve(row);
                 });
             });

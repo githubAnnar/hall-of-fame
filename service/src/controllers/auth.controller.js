@@ -21,10 +21,10 @@ class AuthController {
         // Save User to Database
         await this.userRepository.create(req.body.username, req.body.email, bcrypt.hashSync(req.body.password, 8))
             .then(user => {
-                if (!user){
+                if (!user) {
                     throw new Error("User was not created!");
                 }
-                console.log('User created:', user)
+
                 if (req.body.roles) {
                     this.roleRepository.findByNames(req.body.roles)
                         .then(roles => {
