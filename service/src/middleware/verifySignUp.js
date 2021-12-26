@@ -17,7 +17,7 @@ class VerifySignUpMW {
         this.userRepository.findByUsername(req.body.username)
             .then(user => {
                 if (user) {
-                    console.log(`${Helpers.getDateNowString()} Username: ${user.Username} is already exixting`);
+                    console.log(`${Helpers.getDateNowString()} Username: ${user.Username} is already existing`);
                     res.status(400).send({
                         message: "Failed! Username is already in use!"
                     });
@@ -28,7 +28,7 @@ class VerifySignUpMW {
                 this.userRepository.findByEmail(req.body.email)
                     .then(user => {
                         if (user) {
-                            console.log(`${Helpers.getDateNowString()} Email: ${user.Email} is already exixting`);
+                            console.log(`${Helpers.getDateNowString()} Email: ${user.Email} is already existing`);
                             res.status(400).send({
                                 message: "Failed! Email is already in use!"
                             });
