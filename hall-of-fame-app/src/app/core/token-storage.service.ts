@@ -37,4 +37,37 @@ export class TokenStorageService {
 
     return {};
   }
+
+  public isAdmin(): boolean {
+    const user = this.getUser();
+    if (user) {
+      if (user.roles.includes("ROLE_ADMIN")) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public isModerator(): boolean {
+    const user = this.getUser();
+    if (user) {
+      if (user.roles.includes("ROLE_MODERATOR")) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public isModeratorOrAdmin(): boolean {
+    const user = this.getUser();
+    if (user) {
+      if (user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_MODERATOR")) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

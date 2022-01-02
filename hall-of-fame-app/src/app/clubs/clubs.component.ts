@@ -13,6 +13,7 @@ export class ClubsComponent implements OnInit {
   title!: string;
   getClubsMessage!: IGetClubsMessage;
   clubs!: IClubEx[];
+  allowedToAdd=false;
 
   constructor(private clubDataService: ClubDataService, private tokenService: TokenStorageService) { }
 
@@ -21,6 +22,7 @@ export class ClubsComponent implements OnInit {
       window.location.href = "login";
     }
     
+    this.allowedToAdd=this.tokenService.isModeratorOrAdmin();
     this.title = "Clubs";
 
     const getClubsObserver = {

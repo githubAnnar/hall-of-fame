@@ -2,7 +2,7 @@
     <h3 class="card-header">{{title}}</h3>
     <app-clubs-list class="card-body" [listClubs]="clubs">
     </app-clubs-list>
-    <div class="card-footer">
+    <div *ngIf="allowedToAdd" class="card-footer">
         <a class="btn btn-primary" routerLink="/clubadd">Add club</a>
     </div>
 </div>

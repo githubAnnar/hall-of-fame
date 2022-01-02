@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClubDataService } from 'src/app/core/club-data-service.service';
 import { ResultDataService } from 'src/app/core/result-data-service.service';
+import { TokenStorageService } from 'src/app/core/token-storage.service';
 import { IClubEx } from 'src/app/shared/iclub-ex.interface';
 import { IClubRevision } from 'src/app/shared/iclub-revision.interface';
 import { IGetClubMessage } from 'src/app/shared/iget-club-message.interface';
@@ -26,10 +27,13 @@ export class ClubComponent implements OnInit {
   clubRevisions!: IClubRevision[];
   getClubRevisionsMessage!: IGetClubRevisionsMessage;
 
-  constructor(private clubDataService: ClubDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router) { }
+  allowedToAdd = false;
+
+  constructor(private clubDataService: ClubDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.title = "Club";
+    this.allowedToAdd = this.tokenService.isModeratorOrAdmin();
     let id: string | null = this.route.snapshot.paramMap.get('id');
 
     let idSelected = 0;

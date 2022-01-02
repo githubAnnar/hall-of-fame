@@ -48,7 +48,10 @@ class UserRepository {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                 }
 
-                console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
+                if (row != undefined) {
+                    console.log(`${Helpers.getDateNowString()} findById returns Id ${row.Id}`);
+                }
+
                 resolve(row);
             });
         });
@@ -79,8 +82,10 @@ class UserRepository {
                 if (err) {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                 }
-                
-                console.log(`${Helpers.getDateNowString()} findByUsername returns row with id: ${row.Id}`);
+
+                if (row != undefined) {
+                    console.log(`${Helpers.getDateNowString()} findByUsername returns row with id: ${row.Id}`);
+                }
                 resolve(row);
             });
         });
@@ -112,7 +117,10 @@ class UserRepository {
                     return console.error(`${Helpers.getDateNowString()} ERROR: ${err.message}`);
                 }
 
-                console.log(`${Helpers.getDateNowString()} findByEmail returns ${JSON.stringify(row)}`);
+                if (row != undefined) {
+                    console.log(`${Helpers.getDateNowString()} findByEmail returns ${JSON.stringify(row)}`);
+                }
+
                 resolve(row);
             });
         });
