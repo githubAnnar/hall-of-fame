@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    LogoutComponent
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

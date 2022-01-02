@@ -12,6 +12,7 @@ export class TokenStorageService {
 
   signOut(): void {
     window.sessionStorage.clear();
+    console.log('Session Storage cleaned');
   }
 
   public saveToken(token: string): void {
