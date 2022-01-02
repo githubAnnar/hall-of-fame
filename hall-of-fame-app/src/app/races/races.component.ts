@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceDataService } from '../core/race-data-service.service';
+import { TokenStorageService } from '../core/token-storage.service';
 import { IGetRacesMessage } from '../shared/iget-races-message.interfaces';
 import { IRace } from '../shared/irace.interface';
 
@@ -13,10 +14,13 @@ export class RacesComponent implements OnInit {
   getRacesMessage!: IGetRacesMessage;
   races!: IRace[];
 
-  constructor(private raceDataService: RaceDataService) { }
+  constructor(private raceDataService: RaceDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    console.log("Inside RacesComponent");
+    if (!this.tokenService.getToken()) {
+      window.location.href = "login";
+    }
+
     this.title = "Races";
 
     const getRacesObserver = {

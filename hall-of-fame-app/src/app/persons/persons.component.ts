@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonDataService } from '../core/person-data-service.service';
+import { TokenStorageService } from '../core/token-storage.service';
 import { IGetPersonsMessage } from '../shared/iget-persons-message.interface';
 import { IPersonEx } from '../shared/iperson-ex.interface';
 
@@ -13,10 +14,13 @@ export class PersonsComponent implements OnInit {
   getPersonsMessage!: IGetPersonsMessage;
   persons!: IPersonEx[];
 
-  constructor(private personDataService: PersonDataService) { }
+  constructor(private personDataService: PersonDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    console.log("Inside PersonsComponent");
+    if (!this.tokenService.getToken()) {
+      window.location.href = "login";
+    }
+    
     this.title = "Persons";
 
     const getPersonsObserver = {

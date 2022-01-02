@@ -8,6 +8,7 @@ class AuthEndpoints {
         this.app = app;
         this.db = db;
         this.verifySignup = new middleware.verifySignUp(db);
+        this.authJwt = new middleware.authJwt(db);
         this.controller = new AuthController(db);
         console.log(`${Helpers.getDateNowString()} HELLO from AuthEndpoints constructor`);
     }
@@ -17,6 +18,7 @@ class AuthEndpoints {
         const MODULE = "auth";
         const SIGNUP = "signup";
         const SIGNIN = "signin";
+        const VERIFY = "verify";
 
         this.app.use((req, res, next) => {
             res.header(
@@ -31,6 +33,7 @@ class AuthEndpoints {
         };
         const checkRolesExisted = (req, res, next) => this.controller.signup(req, res);
         const signin = (req, res) => this.controller.signin(req, res);
+        const verify = (req, res) => this.authJwt.verifyToken(req, res);
 
         this.app.post(`/${this.rootPath}/${MODULE}/${SIGNUP}/`, (req, res, next) => {
             console.log(`${Helpers.getDateNowString()} request: POST ${SIGNUP}. req: ${JSON.stringify(req.body)}`);
@@ -41,6 +44,11 @@ class AuthEndpoints {
             console.log(`${Helpers.getDateNowString()} request: POST ${SIGNIN}. req: ${JSON.stringify(req.body)}`);
             next();
         }, signin);
+
+        this.app.get(`/${this.rootPath}/${MODULE}/${VERIFY}/`, (req, res, next) => {
+            console.log(`${Helpers.getDateNowString()} request: POST ${SIGNIN}. req: ${JSON.stringify(req.body)}`);
+            next();
+        }, verify);
     };
 }
 

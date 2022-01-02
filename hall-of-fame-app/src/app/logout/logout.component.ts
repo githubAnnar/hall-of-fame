@@ -12,8 +12,15 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.tokenStorage.signOut();
-
-    
+    this.wait(1000);
+    window.location.href = "";
   }
 
+  wait(ms: number) {
+    var start = new Date().getTime();
+    var end = start;
+    while (end < start + ms) {
+      end = new Date().getTime();
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubDataService } from '../core/club-data-service.service';
+import { TokenStorageService } from '../core/token-storage.service';
 import { IClubEx } from '../shared/iclub-ex.interface';
 import { IGetClubsMessage } from '../shared/iget-clubs-message.interface';
 
@@ -13,10 +14,13 @@ export class ClubsComponent implements OnInit {
   getClubsMessage!: IGetClubsMessage;
   clubs!: IClubEx[];
 
-  constructor(private clubDataService: ClubDataService) { }
+  constructor(private clubDataService: ClubDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    console.log("Inside ClubsComponent");
+    if (!this.tokenService.getToken()) {
+      window.location.href = "login";
+    }
+    
     this.title = "Clubs";
 
     const getClubsObserver = {
