@@ -13,13 +13,12 @@ export class PersonsComponent implements OnInit {
   title!: string;
   getPersonsMessage!: IGetPersonsMessage;
   persons!: IPersonEx[];
+  allowedToAdd = false;
 
   constructor(private personDataService: PersonDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (!this.tokenService.getToken()) {
-      window.location.href = "login";
-    }
+    this.allowedToAdd = this.tokenService.isModeratorOrAdmin();
     
     this.title = "Persons";
 

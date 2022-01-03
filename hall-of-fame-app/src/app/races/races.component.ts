@@ -13,13 +13,12 @@ export class RacesComponent implements OnInit {
   title!: string;
   getRacesMessage!: IGetRacesMessage;
   races!: IRace[];
+  allowedToAdd = false;
 
   constructor(private raceDataService: RaceDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (!this.tokenService.getToken()) {
-      window.location.href = "login";
-    }
+    this.allowedToAdd = this.tokenService.isModeratorOrAdmin();
 
     this.title = "Races";
 

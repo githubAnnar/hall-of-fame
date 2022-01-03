@@ -13,16 +13,12 @@ export class ClubsComponent implements OnInit {
   title!: string;
   getClubsMessage!: IGetClubsMessage;
   clubs!: IClubEx[];
-  allowedToAdd=false;
+  allowedToAdd = false;
 
   constructor(private clubDataService: ClubDataService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (!this.tokenService.getToken()) {
-      window.location.href = "login";
-    }
-    
-    this.allowedToAdd=this.tokenService.isModeratorOrAdmin();
+    this.allowedToAdd = this.tokenService.isModeratorOrAdmin();
     this.title = "Clubs";
 
     const getClubsObserver = {

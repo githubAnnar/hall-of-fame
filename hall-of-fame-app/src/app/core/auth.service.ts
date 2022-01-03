@@ -34,11 +34,9 @@ export class AuthService {
   verify(): boolean {
     if (this.tokenService.getToken()) {
       let test = this.http.get(`${AUTH_API}verify`);
-      console.log('verify test: ', test);
       return true;
     }
 
-    console.log('No Token!');
     return false;
   }
 }

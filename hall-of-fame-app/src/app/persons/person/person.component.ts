@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonDataService } from 'src/app/core/person-data-service.service';
 import { ResultDataService } from 'src/app/core/result-data-service.service';
+import { TokenStorageService } from 'src/app/core/token-storage.service';
 import { IGetPersonMessage } from 'src/app/shared/iget-person-message.interface';
 import { IGetPersonRevisionsMessage } from 'src/app/shared/iget-person-revisions-message.interface';
 import { IGetResultsExMessage } from 'src/app/shared/iget-results-ex-message.interface';
@@ -25,10 +26,12 @@ export class PersonComponent implements OnInit {
 
   personRevisions!: IPersonRevision[];
   getPersonRevisionsMessage!: IGetPersonRevisionsMessage;
+  allowedToAdd = false;
 
-  constructor(private personDataService: PersonDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private personDataService: PersonDataService, private resultDataService: ResultDataService, private route: ActivatedRoute, private router: Router, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.allowedToAdd = this.tokenService.isModeratorOrAdmin();
     this.title = "Person";
     let id: string | null = this.route.snapshot.paramMap.get('id');
 

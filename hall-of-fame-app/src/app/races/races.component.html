@@ -3,6 +3,6 @@
     <app-races-list class="card-body" [listRaces]="races">
     </app-races-list>
     <div class="card-footer">
-        <a class="btn btn-primary" routerLink="/raceadd">Add Race</a>
+        <a *ngIf="allowedToAdd" class="btn btn-primary" routerLink="/raceadd">Add Race</a>
     </div>
 </div>
