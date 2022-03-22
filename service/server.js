@@ -6,7 +6,7 @@ var Helpers = require('./src/helpers/helpers.js');
 var ClubEndpoints = require('./src/endpoints/club_endp.js');
 var PersonEndpoints = require('./src/endpoints/person_endp.js');
 var RaceEndpoints = require('./src/endpoints/race_endp.js');
-var ResultEndpoints=require('./src/endpoints/result_endp.js');
+var ResultEndpoints = require('./src/endpoints/result_endp.js');
 
 console.log(`${Helpers.getDateNowString()} Count of args: ${process.argv.length}`);
 
@@ -22,7 +22,7 @@ if (process.argv.length === 3) {
 
 else {
     console.log("Wrong Args!");
-    return;
+    exit;
 }
 
 // Create express app
